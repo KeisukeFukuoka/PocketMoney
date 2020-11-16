@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class AddImcomeController {
+public class AddImcomeController implements Initializable{
 	
 	@FXML
 	private DatePicker DatePicker; //DatePicker‚ÌŒx‚Íˆê’U•Û—¯
@@ -22,10 +22,9 @@ public class AddImcomeController {
 	private Button AddImcomeButton;
 	@FXML
 	private Button HomeButton;
-	
 
 	@FXML
-	private void onAddImcomeButtonCliked(ActionEvent event_h) {
+	private void onAddImcomeButtonCliked(ActionEvent event) {
 		LocalDate date = DatePicker.getValue();	//DatePicker‚ÌŒx‚Íˆê’U•Û—¯
 		
 		String memo =  MemoTextField.getValue();
@@ -34,9 +33,13 @@ public class AddImcomeController {
 		
 	}
 	@FXML
-	public void onHomeButtonCliked(ActionEvent event_h) {
+	private void onHomeButtonCliked(ActionEvent event) {
 		
 	}
 	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//ƒCƒjƒVƒƒƒ‰ƒCƒY
+	}
 	
 }

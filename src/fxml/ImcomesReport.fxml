@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="650.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="650.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImcomesReportController">
    <children>
       <Pane prefHeight="80.0" prefWidth="650.0" style="-fx-background-color: rgb(237, 243, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -30,14 +30,14 @@
             </ImageView>
          </children>
       </Pane>
-      <TableView layoutX="66.0" layoutY="121.0" prefHeight="351.0" prefWidth="519.0" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="121.0">
+      <TableView fx:id="table" layoutX="66.0" layoutY="121.0" prefHeight="351.0" prefWidth="519.0" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="121.0">
         <columns>
-          <TableColumn prefWidth="138.0" text="日付" />
-          <TableColumn prefWidth="229.0" text="メモ" />
-            <TableColumn prefWidth="196.0" text="金額" />
+          <TableColumn fx:id="Imcomed_atColumn" prefWidth="138.0" text="日付" />
+          <TableColumn fx:id="MemoColumn" prefWidth="229.0" text="メモ" />
+            <TableColumn fx:id="ImcomeColumn" prefWidth="196.0" text="金額" />
         </columns>
       </TableView>
-      <Button layoutX="556.0" layoutY="502.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="51.0" style="-fx-background-color: #ffbf00;" textFill="WHITE" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="35.0">
+      <Button fx:id="HomeButton" layoutX="556.0" layoutY="502.0" mnemonicParsing="false" onAction="#onHomeButtonCliked" prefHeight="47.0" prefWidth="51.0" style="-fx-background-color: #ffbf00;" textFill="WHITE" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="35.0">
          <font>
             <Font size="19.0" />
          </font>
