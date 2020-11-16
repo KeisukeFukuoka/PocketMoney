@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class PayDoneController {
+public class PayDoneController implements Initializable{
 	
 	@FXML
 	private Label PayMoneyLabel;
@@ -26,6 +26,8 @@ public class PayDoneController {
 	public void onHomeButtonCliked(ActionEvent event_h) {
 		
 	}
-	
-	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//イニシャライズ
+	}
 }

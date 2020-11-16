@@ -11,29 +11,32 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class ImcomesReportController {
+public class ImcomesReportController implements Initializable{
 	
 	@FXML
-	private TableView<ImcomeDatabase>/*なぜ警告*/ table;	//テーブルビュー
+	private TableView<?>/*なぜ警告*/ table;	//テーブルビュー
 	@FXML
-	private TableColumn Imcomed_atColumn;			//日付カラム
+	private TableColumn<?, ?> Imcomed_atColumn;			//日付カラム
 	@FXML
-	private TableColumn MemoColumn;				//メモカラム
+	private TableColumn<?, String> MemoColumn;				//メモカラム
 	@FXML
-	private TableColumn ImcomeColumn;				//金額カラム
+	private TableColumn<?, Integer> ImcomeColumn;				//金額カラム
 	@FXML
 	private Button HomeButton;					//ホームボタン
 	
 	
 	//テーブルに表示するID、メモ、金額の3つを必ず含む型として後ほどImcomeDatabaseクラスを定義
 	@FXML
-	public void onReportButtonCliked(ActionEvent event_r) {
+	private void onReportButtonCliked(ActionEvent event) {
 		
 	}
 	@FXML
-	public void onHomeButtonCliked(ActionEvent event_h) {
+	private void onHomeButtonCliked(ActionEvent event) {
 		
 	}
-	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//イニシャライズ
+	}
 	
 }

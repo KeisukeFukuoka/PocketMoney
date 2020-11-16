@@ -18,19 +18,18 @@ public class ImcomeDoneController implements Initializable {
 	@FXML
 	private Button HomeButton;
 	
+	@FXML
+	private void onImcomeReportButtonCliked(ActionEvent event) {
+		
+	}
+	@FXML
+	private void onHomeButtonCliked(ActionEvent event) {
+		
+	}
+	
 	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		//モデル初期化
+	public void initialize(URL location, ResourceBundle resources) {
+		//イニシャライズ
 	}
-	
-	@FXML
-	public void onImcomeReportButtonCliked(ActionEvent event_r) {
-		
-	}
-	@FXML
-	public void onHomeButtonCliked(ActionEvent event_h) {
-		
-	}
-	
 	
 }

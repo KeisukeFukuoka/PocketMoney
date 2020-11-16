@@ -27,7 +27,7 @@ public class MainController implements Initializable {
 	private ToggleButton SkillUp;
 	@FXML
 	private ToggleButton Other;
-	
+	@FXML
 	private void toggleButtonSelected(int i) {
 		noSelectedToggleButton();
 		switch(i) {
@@ -45,11 +45,11 @@ public class MainController implements Initializable {
 			break;
 		}
 	}
-
+	@FXML
 	private void noSelectedToggleButton() {
 		//カテゴリボタンが何も押されなっかた場合の処理　→　入力ボタン押下時で良い？？
 	}
-	
+	@Override
 	//どのトグルボタンが押されたか？または、どのトグルボタンも押されていない状態になったかを知る処理
 	public void initialize(URL location, ResourceBundle resources) {
 		FoodExpenses.setUserData(0);
