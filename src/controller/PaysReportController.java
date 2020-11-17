@@ -63,7 +63,7 @@ public class PaysReportController implements Initializable{	//OK
         	 break;
      }
     	
-    	PayMoneyLabel.setText(int?); // 取得した値をラベルに表示
+    	PayMoneyLabel.setText(value); // 取得した値をラベルに表示
     }
     
     @FXML
