@@ -20,19 +20,19 @@ public class MainController implements Initializable {
 	@FXML
 	private ToggleGroup ToggleGroup;
 	@FXML
-	private ToggleButton FoodExpenses;
+	private ToggleButton FoodExpenses = new ToggleButton();
 	@FXML
-	private ToggleButton DailyNecessities;
+	private ToggleButton DailyNecessities = new ToggleButton();
 	@FXML
-	private ToggleButton SkillUp;
+	private ToggleButton SkillUp = new ToggleButton();
 	@FXML
-	private ToggleButton Other;
+	private ToggleButton Other = new ToggleButton();
 	@FXML
 	private void toggleButtonSelected(int i) {
 		noSelectedToggleButton();
 		switch(i) {
 		case 0:
-			//それぞれ選択されたカテゴリに応じて、MySQLへ挿入
+			//それぞれ選択されたカテゴリに応じて、MySQLへ挿入https://docs.oracle.com/javase/jp/9/docs/api/java/lang/module/InvalidModuleDescriptorException.html
 			break;
 		case 1:
 			
