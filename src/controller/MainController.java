@@ -32,7 +32,7 @@ public class MainController implements Initializable {
 		noSelectedToggleButton();
 		switch(i) {
 		case 0:
-			//それぞれ選択されたカテゴリに応じて、MySQLへ挿入https://docs.oracle.com/javase/jp/9/docs/api/java/lang/module/InvalidModuleDescriptorException.html
+			//それぞれ選択されたカテゴリに応じて、MySQLへ挿入
 			break;
 		case 1:
 			
@@ -60,7 +60,7 @@ public class MainController implements Initializable {
 		ToggleGroup.selectedToggleProperty().addListener(
 			(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) -> {
 				if (new_toggle != null) {
-					toggleButtonSelected((int)new_toggle.getUserData());
+					toggleButtonSelected((int) new_toggle.getUserData());
 				} else {
 					noSelectedToggleButton();
 				}

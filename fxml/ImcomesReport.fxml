@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="650.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImcomesReportController">
    <children>
-      <Pane prefHeight="80.0" prefWidth="650.0" style="-fx-background-color: rgb(237, 243, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Pane prefHeight="80.0" prefWidth="650.0" style="-fx-background-color: #99e07a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Label layoutX="190.0" layoutY="17.0" prefHeight="47.0" prefWidth="271.0" text="　  お小遣い履歴" textFill="#979797">
                <font>
@@ -34,7 +34,7 @@
         <columns>
           <TableColumn fx:id="Imcomed_atColumn" prefWidth="138.0" text="日付" />
           <TableColumn fx:id="MemoColumn" prefWidth="229.0" text="メモ" />
-            <TableColumn fx:id="ImcomeColumn" prefWidth="196.0" text="金額" />
+            <TableColumn fx:id="ImcomeColumn" prefWidth="151.0" text="金額" />
         </columns>
       </TableView>
       <Button fx:id="HomeButton" layoutX="556.0" layoutY="502.0" mnemonicParsing="false" onAction="#onHomeButtonCliked" prefHeight="47.0" prefWidth="51.0" style="-fx-background-color: #ffbf00;" textFill="WHITE" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="35.0">
