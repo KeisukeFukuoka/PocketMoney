@@ -3,8 +3,6 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="537.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImcomeDoneController">
    <children>
-      <Button fx:id="ImcomeReportButton" layoutX="182.0" layoutY="210.0" mnemonicParsing="false" onAction="#onImcomeReportButtonCliked" prefHeight="43.0" prefWidth="173.0" style="-fx-background-color: rgb(237, 243, 0);" text="履歴を見る" textFill="#808080">
+      <Button fx:id="ImcomesReportButton" layoutX="182.0" layoutY="210.0" mnemonicParsing="false" onAction="#onImcomesReportButtonCliked" prefHeight="43.0" prefWidth="173.0" style="-fx-background-color: #99e07a;" text="履歴を見る" textFill="#808080">
          <font>
             <Font size="19.0" />
          </font>
@@ -57,13 +55,5 @@
             </ImageView>
          </graphic>
       </Button>
-      <ToggleButton fx:id="FoodExpenses" layoutX="52.0" layoutY="290.0" mnemonicParsing="false" text="ToggleButton">
-         <toggleGroup>
-            <ToggleGroup fx:id="ToggleGroup" />
-         </toggleGroup>
-      </ToggleButton>
-      <ToggleButton fx:id="DailyNecessities" layoutX="169.0" layoutY="290.0" mnemonicParsing="false" text="ToggleButton" toggleGroup="$ToggleGroup" />
-      <ToggleButton fx:id="SkillUp" layoutX="281.0" layoutY="290.0" mnemonicParsing="false" text="ToggleButton" toggleGroup="$ToggleGroup" />
-      <ToggleButton fx:id="Other" layoutX="386.0" layoutY="290.0" mnemonicParsing="false" text="ToggleButton" toggleGroup="$ToggleGroup" />
    </children>
 </AnchorPane>

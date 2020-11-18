@@ -13,13 +13,13 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="492.0" prefWidth="650.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddImcomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="474.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddImcomeController">
    <children>
-      <Pane prefHeight="80.0" prefWidth="650.0" style="-fx-background-color: #99e07a;">
+      <Pane prefHeight="80.0" prefWidth="483.0" style="-fx-background-color: #99e07a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Label layoutX="190.0" layoutY="17.0" prefHeight="47.0" prefWidth="271.0" text="お小遣い新規追加">
+            <Label layoutX="133.0" layoutY="17.0" prefHeight="47.0" prefWidth="217.0" text="お小遣い新規追加">
                <font>
-                  <Font size="32.0" />
+                  <Font size="26.0" />
                </font>
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -32,58 +32,45 @@
             </Label>
          </children>
       </Pane>
-      <DatePicker fx:id="DatePicker" layoutX="233.0" layoutY="134.0" prefHeight="38.0" prefWidth="149.0" promptText="yyyy/mm/dd" />
-      <Label layoutX="163.0" layoutY="139.0" prefHeight="27.0" prefWidth="54.0" text="日付">
+      <DatePicker fx:id="DatePicker" layoutX="186.0" layoutY="121.0" prefHeight="38.0" prefWidth="114.0" promptText="yyyy/mm/dd" AnchorPane.leftAnchor="186.0" />
+      <Label layoutX="124.0" layoutY="126.0" prefHeight="27.0" prefWidth="54.0" text="日付" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="305.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="163.0" layoutY="194.0" prefHeight="27.0" prefWidth="54.0" text="メモ">
+      <Label layoutX="124.0" layoutY="181.0" prefHeight="27.0" prefWidth="54.0" text="メモ" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="305.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="163.0" layoutY="251.0" prefHeight="27.0" prefWidth="54.0" text="金額">
+      <Label layoutX="124.0" layoutY="238.0" prefHeight="27.0" prefWidth="54.0" text="金額" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="305.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="MemoTextField" layoutX="233.0" layoutY="189.0" prefHeight="38.0" prefWidth="149.0">
+      <TextField fx:id="MemoTextField" layoutX="186.0" layoutY="176.0" prefHeight="38.0" prefWidth="114.0" AnchorPane.leftAnchor="186.0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="ImcomePriceTextField" alignment="CENTER_RIGHT" layoutX="233.0" layoutY="243.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="149.0">
+      <TextField fx:id="ImcomePriceTextField" alignment="CENTER_RIGHT" layoutX="186.0" layoutY="230.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="114.0" AnchorPane.leftAnchor="186.0">
          <font>
             <Font name="System Bold Italic" size="21.0" />
          </font>
       </TextField>
-      <Label layoutX="391.0" layoutY="252.0" prefHeight="27.0" prefWidth="25.0" text="円">
+      <Label layoutX="315.0" layoutY="239.0" prefHeight="27.0" prefWidth="25.0" text="円" AnchorPane.leftAnchor="315.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="AddImcomeButton" layoutX="233.0" layoutY="330.0" mnemonicParsing="false" onAction="#onAddImcomeButtonCliked" prefHeight="47.0" prefWidth="202.0" style="-fx-background-color: #99e07a;" text="　追加する" textFill="WHITE">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="234.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
-         <image>
-            <Image url="@../images/dollar.png" />
-         </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
-      <Button layoutX="545.0" layoutY="402.0" mnemonicParsing="false" onAction="#onHomeButtonCliked" prefHeight="47.0" prefWidth="51.0" style="-fx-background-color: #ffbf00;" textFill="WHITE">
+      <Button fx:id="AddImcomeButton" layoutX="142.0" layoutY="320.0" mnemonicParsing="false" onAction="#onAddImcomeButtonCliked" prefHeight="47.0" prefWidth="202.0" style="-fx-background-color: #99e07a;" text="　追加する" textFill="WHITE" AnchorPane.leftAnchor="142.0">
          <font>
             <Font size="19.0" />
          </font>
          <graphic>
-            <ImageView fx:id="HomeButton" fitHeight="40.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
+            <ImageView fitHeight="38.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
                <image>
-                  <Image url="@../images/home.png" />
+                  <Image url="@../images/dollar.png" />
                </image>
                <viewport>
                   <Rectangle2D />
@@ -91,5 +78,18 @@
             </ImageView>
          </graphic>
       </Button>
+      <Button layoutX="393.0" layoutY="391.0" mnemonicParsing="false" onAction="#onHomeButtonCliked" prefHeight="47.0" prefWidth="51.0" style="-fx-background-color: #ffbf00;" textFill="WHITE" AnchorPane.leftAnchor="393.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="HomeButton" fitHeight="40.0" fitWidth="33.0" layoutX="372.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0" AnchorPane.leftAnchor="402.0">
+         <image>
+            <Image url="@../images/home.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
    </children>
 </AnchorPane>
