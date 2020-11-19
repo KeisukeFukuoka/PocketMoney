@@ -2,21 +2,28 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 
 
-public class MainController implements Initializable {    
+public class MainController implements Initializable {
+    @FXML
+    private Button AddImcomeButton;
+    @FXML
+    private Button ImcomesReportButton;
+    @FXML
+    private Label MoneyLeftLabel;
+    @FXML
+    private DatePicker DatePicker;
 	@FXML
 	private ToggleGroup ToggleGroup;
 	@FXML
@@ -27,6 +34,14 @@ public class MainController implements Initializable {
 	private ToggleButton SkillUp = new ToggleButton();
 	@FXML
 	private ToggleButton Other = new ToggleButton();
+    @FXML
+    private TextField MemoTextField;
+    @FXML
+    private TextField PayMoneyTextField;
+    @FXML
+    private Button AddPayButton;
+    @FXML
+    private Button PaysReportButton;
 	@FXML
 	private void toggleButtonSelected(int i) {
 		noSelectedToggleButton();
@@ -67,5 +82,15 @@ public class MainController implements Initializable {
 			}
 		);
 		noSelectedToggleButton();
-	}	
+	}
+
+    @FXML
+    void onAddImcomeButtonCliked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onImcomesReportButtonCliked(ActionEvent event) {
+
+    }
 }
