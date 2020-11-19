@@ -32,7 +32,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="MoneyLeft" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="45.0" prefHeight="47.0" prefWidth="91.0" text="540" textAlignment="RIGHT" textFill="#ff2020" textOverrun="CLIP">
+      <Label fx:id="MoneyLeftLabel" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="45.0" prefHeight="47.0" prefWidth="91.0" text="540" textAlignment="RIGHT" textFill="#ff2020" textOverrun="CLIP">
          <font>
             <Font name="System Bold Italic" size="31.0" />
          </font>

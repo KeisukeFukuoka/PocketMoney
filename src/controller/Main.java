@@ -1,5 +1,7 @@
 package controller;
 	
+import java.sql.Connection;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,10 +26,13 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        
+        try(Connection con = mysql.MySQLJDBCUtil.getConnection()) {
+        	
+        	System.out.println(String.format("Connected to database %s "
+        			+ "successfully.", con.getCatalog()));
+        } catch(SQLException ex) {
+        	ex.printStackTrace();
+        }
     }
 }
-
-
-
-
-
