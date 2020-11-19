@@ -13,9 +13,10 @@ public class Main extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-    	Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
-        //アプリケーションクラスのstartメソッドでは、FXMLLoad#loadの結果はSceneを作るためにしか使わないのが普通
-    	//ですからFXMLのルートノードが何であれ、常にParentとして扱うのがよい
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+    	loader.setController(new MainController());
+    	Parent root = loader.load();
+    	
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         
