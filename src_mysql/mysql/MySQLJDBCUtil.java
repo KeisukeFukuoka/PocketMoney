@@ -1,6 +1,6 @@
 package mysql;
 
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,13 +12,12 @@ public class MySQLJDBCUtil {
 	public static Connection getConnection() throws SQLException {
 		Connection con = null;
 
-		try (FileReader f = new FileReader("db.properties")) {
+		try (FileInputStream f = new FileInputStream("/Users/USER/eclipse-workspace/PocketMoney/src_mysql/mysql/db.properties")) {
 			
 			
 			//propertiesファイルのロード
 			Properties pros = new Properties();
 			pros.load(f);
-
 			
 			//データベースパラメータの指定
 			String url    	= pros.getProperty("url");
@@ -30,6 +29,7 @@ public class MySQLJDBCUtil {
 
 		//try-with-resourcesステートメントによる例外処理の簡略化した記述
 		} catch(IOException e) {
+			System.out.println("DBにアクセス出来ません");
 			e.printStackTrace();
 		}
 		return con;
