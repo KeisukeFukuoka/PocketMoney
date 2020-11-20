@@ -7,7 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import mysql.MySQLJDBCUtil;
 
 public class Main extends Application {
     
@@ -16,6 +16,8 @@ public class Main extends Application {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
     	loader.setController(new MainController());
     	Parent root = loader.load();
+    	//アプリケーションクラスのstartメソッドでは、FXMLLoad#loadの結果はSceneを作るために使う
+    	//FXMLのルートノードが何であれ、常にParentとして扱うのがよい
     	
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
@@ -28,10 +30,10 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
         
-        try(Connection con = mysql.MySQLJDBCUtil.getConnection()) {
+        try(Connection con = MySQLJDBCUtil.getConnection()) {
         	
         	System.out.println(String.format("Connected to database %s "
-        			+ "successfully.", con.getCatalog()));
+        			 + "successfully.", con.getCatalog()));
         } catch(SQLException ex) {
         	ex.printStackTrace();
         }
