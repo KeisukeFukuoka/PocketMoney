@@ -7,7 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import mysql.MySQLJDBCUtil;
+import mysql.MySQLJDBC;
 
 public class Main extends Application {
     
@@ -30,12 +30,12 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
         
-        try(Connection con = MySQLJDBCUtil.getConnection()) {
-        	
-        	System.out.println(String.format("Connected to database %s "
-        			 + "successfully.", con.getCatalog()));
-        } catch(SQLException ex) {
-        	ex.printStackTrace();
-        }
+//        try(Connection con = MySQLJDBCUtil.getConnection()) {
+//        	
+//        	System.out.println(String.format("Connected to database %s "
+//        			 + "successfully.", con.getCatalog()));
+//        } catch(SQLException ex) {
+//        	ex.printStackTrace();
+//        }
     }
 }

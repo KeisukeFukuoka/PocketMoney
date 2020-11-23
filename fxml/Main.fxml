@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="541.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="541.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="AddImcomeButton" layoutX="341.0" layoutY="45.0" mnemonicParsing="false" onAction="#onAddImcomeButtonCliked" prefHeight="43.0" prefWidth="99.0" style="-fx-background-color: #99e07a;" text="＋お小遣い追加" textFill="GREY" />
+      <Button fx:id="AddPayButton" layoutX="341.0" layoutY="45.0" mnemonicParsing="false" onAction="#onAddPayButtonCliked" prefHeight="43.0" prefWidth="99.0" style="-fx-background-color: #99e07a;" text="＋お小遣い追加" textFill="GREY" />
       <Button fx:id="ImcomesReportButton" layoutX="450.0" layoutY="45.0" mnemonicParsing="false" onAction="#onImcomesReportButtonCliked" prefHeight="43.0" prefWidth="67.0" style="-fx-background-color: #99e07a;" text="       履歴" textFill="#808080" />
       <Label layoutX="98.0" layoutY="60.0" prefHeight="17.0" prefWidth="129.0" text="お小遣い残金">
          <font>
@@ -32,7 +32,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="MoneyLeftLabel" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="45.0" prefHeight="47.0" prefWidth="91.0" text="540" textAlignment="RIGHT" textFill="#ff2020" textOverrun="CLIP">
+      <Label fx:id="MoneyLeftLabel" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="45.0" prefHeight="47.0" prefWidth="91.0" textAlignment="RIGHT" textFill="#ff2020" textOverrun="CLIP">
          <font>
             <Font name="System Bold Italic" size="31.0" />
          </font>
@@ -165,7 +165,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="AddPayButton" layoutX="168.0" layoutY="398.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="202.0" style="-fx-background-color: #ffbf00;" text="　　支出を登録する" textFill="WHITE">
+      <Button fx:id="AddPayButton" layoutX="168.0" layoutY="398.0" mnemonicParsing="false" onAction="#onAddPayButtonCliked" prefHeight="47.0" prefWidth="202.0" style="-fx-background-color: #ffbf00;" text="　　支出を登録する" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font>
