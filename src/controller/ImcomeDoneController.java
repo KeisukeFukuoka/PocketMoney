@@ -29,7 +29,7 @@ public class ImcomeDoneController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//イニシャライズ
+		//イニシャライズ。コントローラのルート要素が完全に処理された後に、コントローラを初期化するためにコールされる。
 	}
 	
 }
