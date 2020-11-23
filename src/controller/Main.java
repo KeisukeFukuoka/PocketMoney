@@ -1,13 +1,10 @@
 package controller;
 	
-import java.sql.Connection;
-import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import mysql.MySQLDao;
 
 public class Main extends Application {
     
@@ -20,7 +17,7 @@ public class Main extends Application {
     	//FXMLのルートノードが何であれ、常にParentとして扱うのがよい
     	
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+//        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
         
         stage.setTitle("お小遣い管理アプリ");
         stage.setScene(scene);
@@ -29,13 +26,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        
-//        try(Connection con = MySQLJDBCUtil.getConnection()) {
-//        	
-//        	System.out.println(String.format("Connected to database %s "
-//        			 + "successfully.", con.getCatalog()));
-//        } catch(SQLException ex) {
-//        	ex.printStackTrace();
-//        }
     }
 }

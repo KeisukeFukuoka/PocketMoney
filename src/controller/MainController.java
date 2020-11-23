@@ -1,14 +1,17 @@
 package controller;
 
 import mysql.MySQLDao;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-
-import javafx.beans.binding.Bindings;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -17,9 +20,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 
 public class MainController implements Initializable {
 	@FXML
@@ -62,10 +67,7 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 
-
-
-
-
+		
 		//ƒgƒOƒ‹ƒ{ƒ^ƒ“‚Ö‚Ì’l‚ÌŠ„‚è“–‚Ä
 		FoodExpenses.setUserData(1);
 		DailyNecessities.setUserData(2);
@@ -82,6 +84,50 @@ public class MainController implements Initializable {
 				});
 	}
 
+	@FXML
+	void onAddImcomeButtonCliked(ActionEvent event) {
+		/*
+		 * Œ»İ•\¦‚³‚ê‚Ä‚¢‚é‰æ–Ê‚ğ•Â‚¶‚é
+		 */
+		Scene s = ((Node)event.getSource()).getScene();
+		Window window = s.getWindow();
+		window.hide();
+		
+		//‰æ–Ê‘JˆÚ
+		try {
+			Parent parent = FXMLLoader.load(getClass().getResource("/AddImcome.fxml"));
+			Scene scene = new Scene(parent);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setTitle("‚¨¬Œ­‚¢“o˜^");
+			stage.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@FXML
+	void onImcomesReportButtonCliked(ActionEvent event) {
+		/*
+		 * Œ»İ•\¦‚³‚ê‚Ä‚¢‚é‰æ–Ê‚ğ•Â‚¶‚é
+		 */
+		Scene s = ((Node)event.getSource()).getScene();
+		Window window = s.getWindow();
+		window.hide();
+		
+		//‰æ–Ê‘JˆÚ
+		try {
+			Parent parent = FXMLLoader.load(getClass().getResource("/ImcomesReport.fxml"));
+			Scene scene = new Scene(parent);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setTitle("‚¨¬Œ­‚¢—š—ğ");
+			stage.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	@FXML
 	public void onAddPayButtonCliked(ActionEvent event) throws SQLException {
 
@@ -115,12 +161,23 @@ public class MainController implements Initializable {
 
 		MySQLDao.insertRecord(paid_at, memo, money, category_id);
 
-		//‚·‚®‚³‚Ü‚¨¬Œ­‚¢c‚‚É”½‰f
-		MySQLDao mysq = new MySQLDao();
+		
+		/*
+		 * Œ»İ•\¦‚³‚ê‚Ä‚¢‚é‰æ–Ê‚ğ•Â‚¶‚é
+		 */
+		Scene s = ((Node)event.getSource()).getScene();
+		Window window = s.getWindow();
+		window.hide();
+		
+		//‰æ–Ê‘JˆÚ
 		try {
-			MoneyLeftLabel.setText(Integer.toString(mysq.selectMoney()));
-		} catch (SQLException e) {
-			// TODO ©“®¶¬‚³‚ê‚½ catch ƒuƒƒbƒN
+			Parent parent = FXMLLoader.load(getClass().getResource("/PayDone.fxml"));
+			Scene scene = new Scene(parent);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setTitle("“o˜^Š®—¹");
+			stage.show();
+		}catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -136,7 +193,24 @@ public class MainController implements Initializable {
 	}
 
 	@FXML
-	void onImcomesReportButtonCliked(ActionEvent event) {
-
+	void onPaysReportButtonCliked(ActionEvent event) {
+		/*
+		 * Œ»İ•\¦‚³‚ê‚Ä‚¢‚é‰æ–Ê‚ğ•Â‚¶‚é
+		 */
+		Scene s = ((Node)event.getSource()).getScene();
+		Window window = s.getWindow();
+		window.hide();
+		
+		//‰æ–Ê‘JˆÚ
+		try {
+			Parent parent = FXMLLoader.load(getClass().getResource("/PaysReport.fxml"));
+			Scene scene = new Scene(parent);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setTitle("“o˜^Šm”F");
+			stage.show();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
