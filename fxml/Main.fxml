@@ -19,7 +19,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="541.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="AddPayButton" layoutX="341.0" layoutY="45.0" mnemonicParsing="false" onAction="#onAddPayButtonCliked" prefHeight="43.0" prefWidth="99.0" style="-fx-background-color: #99e07a;" text="＋お小遣い追加" textFill="GREY" />
+      <Button fx:id="AddImcomeButton" layoutX="341.0" layoutY="45.0" mnemonicParsing="false" onAction="#onAddImcomeButtonCliked" prefHeight="43.0" prefWidth="99.0" style="-fx-background-color: #99e07a;" text="＋お小遣い追加" textFill="GREY" />
       <Button fx:id="ImcomesReportButton" layoutX="450.0" layoutY="45.0" mnemonicParsing="false" onAction="#onImcomesReportButtonCliked" prefHeight="43.0" prefWidth="67.0" style="-fx-background-color: #99e07a;" text="       履歴" textFill="#808080" />
       <Label layoutX="98.0" layoutY="60.0" prefHeight="17.0" prefWidth="129.0" text="お小遣い残金">
          <font>
@@ -170,7 +170,7 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Button fx:id="PaysReportButton" layoutX="168.0" layoutY="468.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="202.0" style="-fx-background-color: #ffbf00;" text="　  これまでの支出" textFill="WHITE">
+      <Button fx:id="PaysReportButton" layoutX="168.0" layoutY="468.0" mnemonicParsing="false" onAction="#onPaysReportButtonCliked" prefHeight="43.0" prefWidth="202.0" style="-fx-background-color: #ffbf00;" text="　  これまでの支出" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font>

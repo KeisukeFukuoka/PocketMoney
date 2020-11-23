@@ -63,14 +63,19 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="AddImcomeButton" layoutX="142.0" layoutY="320.0" mnemonicParsing="false" onAction="#onAddImcomeButtonCliked" prefHeight="47.0" prefWidth="202.0" style="-fx-background-color: #99e07a;" text="　追加する" textFill="WHITE" AnchorPane.leftAnchor="142.0">
+      <Button fx:id="AddImcomeButton" layoutX="167.0" layoutY="321.0" mnemonicParsing="false" onAction="#onAddImcomeButtonCliked" prefHeight="48.0" prefWidth="158.0" style="-fx-background-color: #99e07a;" text="     追加する" textFill="WHITE" AnchorPane.leftAnchor="167.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="HomeButton" layoutX="393.0" layoutY="391.0" mnemonicParsing="false" onAction="#onHomeButtonCliked" prefHeight="47.0" prefWidth="51.0" style="-fx-background-color: #ffbf00;" textFill="WHITE" AnchorPane.leftAnchor="393.0">
          <font>
             <Font size="19.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="38.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
+            <ImageView fitHeight="40.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
                <image>
-                  <Image url="@../images/dollar.png" />
+                  <Image url="@../images/home.png" />
                </image>
                <viewport>
                   <Rectangle2D />
@@ -78,14 +83,9 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="393.0" layoutY="391.0" mnemonicParsing="false" onAction="#onHomeButtonCliked" prefHeight="47.0" prefWidth="51.0" style="-fx-background-color: #ffbf00;" textFill="WHITE" AnchorPane.leftAnchor="393.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
-      <ImageView fx:id="HomeButton" fitHeight="40.0" fitWidth="33.0" layoutX="372.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0" AnchorPane.leftAnchor="402.0">
+      <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="156.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
          <image>
-            <Image url="@../images/home.png" />
+            <Image url="@../images/dollar.png" />
          </image>
          <viewport>
             <Rectangle2D />
