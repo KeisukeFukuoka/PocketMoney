@@ -1,6 +1,6 @@
 package controller;
 
-import mysql.MySQLJDBC;
+import mysql.MySQLDao;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -54,7 +54,7 @@ public class MainController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		//アプリ起動時にお小遣い残高の表示
-		MySQLJDBC mysq = new MySQLJDBC();
+		MySQLDao mysq = new MySQLDao();
 		try {
 			MoneyLeftLabel.setText(Integer.toString(mysq.selectMoney()));
 		} catch (SQLException e) {
@@ -113,10 +113,10 @@ public class MainController implements Initializable {
 		int money = Integer.parseInt(stmoney);
 		int category_id = catchNumber;
 
-		MySQLJDBC.insertRecord(paid_at, memo, money, category_id);
+		MySQLDao.insertRecord(paid_at, memo, money, category_id);
 
 		//すぐさまお小遣い残高に反映
-		MySQLJDBC mysq = new MySQLJDBC();
+		MySQLDao mysq = new MySQLDao();
 		try {
 			MoneyLeftLabel.setText(Integer.toString(mysq.selectMoney()));
 		} catch (SQLException e) {

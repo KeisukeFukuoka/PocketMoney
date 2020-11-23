@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 
-public class MySQLJDBC {
+public class MySQLDao {
 
 	private static final String url = "jdbc:mariadb://localhost:3306/pocketmoney?";
 	private static final String user = "root";
