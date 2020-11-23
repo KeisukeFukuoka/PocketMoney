@@ -7,7 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import mysql.MySQLJDBC;
+import mysql.MySQLDao;
 
 public class Main extends Application {
     
