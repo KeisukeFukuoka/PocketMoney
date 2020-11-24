@@ -30,8 +30,8 @@ public class ImcomeDoneController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		//AddImcome‰æ–Ê‚Å“ü—Í‚³‚ê‚½‹àŠz‚ğAƒ‰ƒxƒ‹‚É”½‰f
-		MySQLDao mysq = new MySQLDao();
 		try {
+			MySQLDao mysq = new MySQLDao();
 			ImcomePriceLabel.setText(mysq.selectIncomePrice());
 		} catch (SQLException e) {
 			e.printStackTrace();
