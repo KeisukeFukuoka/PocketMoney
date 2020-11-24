@@ -23,7 +23,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Label fx:id="PayMoneyLabel" alignment="CENTER_RIGHT" layoutX="51.0" layoutY="91.0" prefHeight="47.0" prefWidth="100.0" text="540" textAlignment="RIGHT" textFill="#ff2020" textOverrun="CLIP">
+      <Label fx:id="PayMoneyLabel" alignment="CENTER_RIGHT" layoutX="51.0" layoutY="91.0" prefHeight="47.0" prefWidth="100.0" textAlignment="RIGHT" textFill="#ff2020" textOverrun="CLIP">
          <font>
             <Font name="System Bold Italic" size="31.0" />
          </font>

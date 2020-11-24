@@ -61,12 +61,11 @@ public class MainController implements Initializable {
 		//アプリ起動時にお小遣い残高の表示
 		MySQLDao mysq = new MySQLDao();
 		try {
-			MoneyLeftLabel.setText(Integer.toString(mysq.selectMoney()));
+			MoneyLeftLabel.setText(mysq.selectMoney());
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-
 		
 		//トグルボタンへの値の割り当て
 		FoodExpenses.setUserData(1);
@@ -133,9 +132,6 @@ public class MainController implements Initializable {
 
 		//入力エラーの際にアラートを表示させる処理
 		Window owner = AddPayButton.getScene().getWindow();
-
-		System.out.println(DatePicker.getValue());
-		System.out.println(PayMoneyTextField.getText());
 
 		if (DatePicker.getValue() == null) {
 			showAlert(Alert.AlertType.ERROR, owner, "入力エラー!", null,

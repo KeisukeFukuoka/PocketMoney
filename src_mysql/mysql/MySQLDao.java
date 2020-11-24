@@ -16,30 +16,49 @@ public class MySQLDao {
 	
 
 	//現在のお小遣い残高照会
-	public int selectMoney() throws SQLException {
+	public String selectMoney() throws SQLException {
 		final String SUM_QUERY = "select"
 							   + "(select sum(imcome) as imcomes_sum from imcomes)" //収入
 							   + " - "												//-(マイナス)
 							   + "(select sum(money) as pays_sum from pays);";		//支出
-		int money = 0;
+		String money = "";
 		
 		try (Connection conn = DriverManager.getConnection(url, user, password);
 			 Statement stmt = conn.createStatement();
 			 ResultSet rs = stmt.executeQuery(SUM_QUERY)) {
 			
-			if(rs.next()) {money =  rs.getInt(1);} //残高をint型で受け取る
+			if(rs.next()) {money =  rs.getString(1);} //残高の値を受け取る
 
-		//try-with-resourcesステートメントによる例外処理の簡略化した記述
 		} catch(SQLException e) {
 			System.out.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
 		}
-		System.out.println(money);
 		return money;
 	}
 
 
-	//データベースへ挿入
+	//imcomesテーブルへデータ挿入
+	public static void insertRecord(LocalDate imcomed_at, String memo, int imcome) throws SQLException {
+		final String INSERT_QUERY = "INSERT INTO imcomes (imcomed_at, memo, imcome) VALUES (?, ?, ?)";
+		
+		try (Connection conn = DriverManager
+				.getConnection(url, user, password);
+				
+				PreparedStatement ｐｓ = conn.prepareStatement(INSERT_QUERY)) {
+			
+			ｐｓ.setObject(1, imcomed_at);
+			ｐｓ.setString(2, memo);
+			ｐｓ.setInt(3, imcome);
+			ｐｓ.executeUpdate();
+			System.out.println(ｐｓ);
+			
+		} catch(SQLException e) {
+			System.out.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	//paysテーブルへデータ挿入
 	public static void insertRecord(LocalDate paid_at, String memo, int money, int category_id) throws SQLException {
 		final String INSERT_QUERY = "INSERT INTO pays (paid_at, memo, money, category_id) VALUES (?, ?, ?, ?)";
 
@@ -52,14 +71,49 @@ public class MySQLDao {
 				ｐｓ.setString(2, memo);
 				ｐｓ.setInt(3, money);
 				ｐｓ.setInt(4, category_id);
-	
-				System.out.println(ｐｓ);
 				ｐｓ.executeUpdate();
+				System.out.println(ｐｓ);
 
-			//try-with-resourcesステートメントによる例外処理の簡略化した記述
 		} catch(SQLException e) {
 			System.out.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
 		}
+	}
+
+	
+	//AddImcome画面で入力された金額を取得
+	public String selectIncomePrice() throws SQLException {
+		final String SUM_QUERY = "SELECT imcome FROM imcomes ORDER BY id DESC LIMIT 1;";
+		String newPrice = "";
+		
+		try (Connection conn = DriverManager.getConnection(url, user, password);
+			 Statement stmt = conn.createStatement();
+			 ResultSet rs = stmt.executeQuery(SUM_QUERY)) {
+			
+			if(rs.next()) {newPrice = rs.getString("imcome");} //値をint型で受け取る
+
+		} catch(SQLException e) {
+			System.out.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+		}
+		return newPrice;
+	}
+	
+	//Main画面で入力された金額を取得
+	public String selectPayPrice() throws SQLException {
+		final String SUM_QUERY = "SELECT money FROM pays ORDER BY id DESC LIMIT 1;";
+		String newPrice = "";
+		
+		try (Connection conn = DriverManager.getConnection(url, user, password);
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(SUM_QUERY)) {
+			
+			if(rs.next()) {newPrice = rs.getString("money");} //値をint型で受け取る
+			
+		} catch(SQLException e) {
+			System.out.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+		}
+		return newPrice;
 	}
 }
