@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import mysql.MySQLDao;
 
 public class PayDoneController implements Initializable{
 	
@@ -27,7 +29,13 @@ public class PayDoneController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//イニシャライズ
+		//Main画面で入力された金額を、ラベルに反映
+		MySQLDao mysq = new MySQLDao();
+		try {
+			PayMoneyLabel.setText(mysq.selectPayPrice());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML

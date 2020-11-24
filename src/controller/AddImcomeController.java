@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -11,14 +12,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import mysql.MySQLDao;
 
 public class AddImcomeController implements Initializable{
-	
+
 	@FXML
 	private javafx.scene.control.DatePicker DatePicker; //DatePicker→javafx.scene.controlへ変更
 	@FXML
@@ -29,23 +31,45 @@ public class AddImcomeController implements Initializable{
 	private Button AddImcomeButton;
 	@FXML
 	private Button HomeButton;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//イニシャライズ
+	}
 
 	@FXML
-	private void onAddImcomeButtonCliked(ActionEvent event) {
-		LocalDate date = DatePicker.getValue();	//DatePickerの警告は一旦保留
+	private void onAddImcomeButtonCliked(ActionEvent event) throws SQLException {
+
+		//入力エラーの際にアラートを表示させる処理
+		Window owner = AddImcomeButton.getScene().getWindow();
+
+		if (DatePicker.getValue() == null) {
+			showAlert(Alert.AlertType.ERROR, owner, "入力エラー!", null,
+					"日付を入力して下さい。");
+			return;
+		}
+		if (ImcomePriceTextField.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR, owner, "入力エラー!", null,
+					"金額を入力して下さい。");
+			return;
+		}
+
+
+		LocalDate imcomed_at = DatePicker.getValue();
+		String memo = MemoTextField.getText();
+		String stimcome = ImcomePriceTextField.getText();
+		int imcome = Integer.parseInt(stimcome);
 		
-//		String memo =  MemoTextField.getValue();
-		
-//		String price =  MemoTextField.getValue();
-		
-		
+		MySQLDao.insertRecord(imcomed_at, memo, imcome);
+
+
 		/*
 		 * 現在表示されている画面を閉じる
 		 */
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
-		
+
 		//画面遷移
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource("/ImcomeDone.fxml"));
@@ -57,8 +81,18 @@ public class AddImcomeController implements Initializable{
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
+
+	private void showAlert(Alert.AlertType alertType, Window owner, String title, String header, String message) {
+
+		Alert alert = new Alert(alertType);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		alert.initOwner(owner);
+		alert.show();
+	}
+
 	@FXML
 	private void onHomeButtonCliked(ActionEvent event) {
 		/*
@@ -67,26 +101,22 @@ public class AddImcomeController implements Initializable{
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
-	
+
 		//画面遷移
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
-	    	loader.setController(new MainController());
-	    	Parent root = loader.load();
-	        Scene scene = new Scene(root);
-	        
+			loader.setController(new MainController());
+			Parent root = loader.load();
+			Scene scene = new Scene(root);
+
 			Stage stage = new Stage();
-	        stage.setTitle("お小遣い管理アプリ");
-	        stage.setScene(scene);
-	        stage.show();
+			stage.setTitle("お小遣い管理アプリ");
+			stage.setScene(scene);
+			stage.show();
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		//イニシャライズ
-	}
-	
+
+
 }

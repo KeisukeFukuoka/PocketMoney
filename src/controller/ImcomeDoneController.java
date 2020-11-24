@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,18 +13,30 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import mysql.MySQLDao;
 
 public class ImcomeDoneController implements Initializable {
 	
 	@FXML
-	private Label IncomePriceLabel;
+	private Label ImcomePriceLabel;
 	@FXML
-	private Button ImcomeReportButton;
+	private Button ImcomesReportButton;
 	@FXML
 	private Button HomeButton;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		//AddImcome画面で入力された金額を、ラベルに反映
+		MySQLDao mysq = new MySQLDao();
+		try {
+			ImcomePriceLabel.setText(mysq.selectIncomePrice());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@FXML
 	private void onImcomesReportButtonCliked(ActionEvent event) {
@@ -71,9 +84,5 @@ public class ImcomeDoneController implements Initializable {
 		}
 	}
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		//イニシャライズ。コントローラのルート要素が完全に処理された後に、コントローラを初期化するためにコールされる。
-	}
 	
 }
