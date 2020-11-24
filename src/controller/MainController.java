@@ -59,8 +59,8 @@ public class MainController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		//アプリ起動時にお小遣い残高の表示
-		MySQLDao mysq = new MySQLDao();
 		try {
+			MySQLDao mysq = new MySQLDao();
 			MoneyLeftLabel.setText(mysq.selectMoney());
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック

@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="650.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImcomesReportController">
    <children>
@@ -31,11 +32,23 @@
          </children>
       </Pane>
       <TableView fx:id="table" layoutX="66.0" layoutY="121.0" prefHeight="351.0" prefWidth="519.0" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="121.0">
-        <columns>
-          <TableColumn fx:id="Imcomed_atColumn" prefWidth="138.0" text="日付" />
-          <TableColumn fx:id="MemoColumn" prefWidth="229.0" text="メモ" />
-            <TableColumn fx:id="ImcomeColumn" prefWidth="151.0" text="金額" />
-        </columns>
+	     <columns>
+	        <TableColumn prefWidth="138.0" text="日付">
+		       <cellValueFactory>
+			<PropertyValueFactory property="imcomed_at" />
+  		 </cellValueFactory>
+	  </TableColumn>
+	  <TableColumn prefWidth="229.0" text="メモ">
+	   	 <cellValueFactory>
+			<PropertyValueFactory property="memo" />
+		 </cellValueFactory>
+	  </TableColumn>
+	  <TableColumn prefWidth="151.0" text="金額">
+		 <cellValueFactory>
+			<PropertyValueFactory property="imcome" />
+		 </cellValueFactory>
+	  </TableColumn>
+	</columns>
       </TableView>
       <Button fx:id="HomeButton" layoutX="556.0" layoutY="502.0" mnemonicParsing="false" onAction="#onHomeButtonCliked" prefHeight="47.0" prefWidth="51.0" style="-fx-background-color: #ffbf00;" textFill="WHITE" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="35.0">
          <font>

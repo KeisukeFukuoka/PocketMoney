@@ -4,9 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+import controller.TableViewItem;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class MySQLDao {
 
@@ -80,6 +86,23 @@ public class MySQLDao {
 		}
 	}
 
+	//Main‰æ–Ê‚Å“ü—Í‚³‚ê‚½‹àŠz‚ğæ“¾
+	public String selectPayPrice() throws SQLException {
+		final String SUM_QUERY = "SELECT money FROM pays ORDER BY id DESC LIMIT 1;";
+		String newPrice = "";
+		
+		try (Connection conn = DriverManager.getConnection(url, user, password);
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(SUM_QUERY)) {
+			
+			if(rs.next()) {newPrice = rs.getString("money");} //’l‚ğó‚¯æ‚é
+			
+		} catch(SQLException e) {
+			System.out.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+		}
+		return newPrice;
+	}
 	
 	//AddImcome‰æ–Ê‚Å“ü—Í‚³‚ê‚½‹àŠz‚ğæ“¾
 	public String selectIncomePrice() throws SQLException {
@@ -90,7 +113,7 @@ public class MySQLDao {
 			 Statement stmt = conn.createStatement();
 			 ResultSet rs = stmt.executeQuery(SUM_QUERY)) {
 			
-			if(rs.next()) {newPrice = rs.getString("imcome");} //’l‚ğintŒ^‚Åó‚¯æ‚é
+			if(rs.next()) {newPrice = rs.getString("imcome");} //’l‚ğó‚¯æ‚é
 
 		} catch(SQLException e) {
 			System.out.println("SQLException:" + e.getMessage());
@@ -99,21 +122,52 @@ public class MySQLDao {
 		return newPrice;
 	}
 	
-	//Main‰æ–Ê‚Å“ü—Í‚³‚ê‚½‹àŠz‚ğæ“¾
-	public String selectPayPrice() throws SQLException {
-		final String SUM_QUERY = "SELECT money FROM pays ORDER BY id DESC LIMIT 1;";
-		String newPrice = "";
+	//h‚¨¬Œ­‚¢h—š—ğ‰æ–Ê‚ÌTableView‚É•\¦‚³‚¹‚éƒf[ƒ^‚Ìæ“¾
+	public ObservableList<TableViewItem> selectTableViewIncomes() throws SQLException {
+		final String SUM_QUERY = "SELECT imcomed_at, memo, imcome FROM imcomes ORDER BY imcomed_at;";
+		ObservableList<TableViewItem> list = FXCollections.observableArrayList();
 		
 		try (Connection conn = DriverManager.getConnection(url, user, password);
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(SUM_QUERY)) {
-			
-			if(rs.next()) {newPrice = rs.getString("money");} //’l‚ğintŒ^‚Åó‚¯æ‚é
-			
-		} catch(SQLException e) {
+
+			while(rs.next()){
+				TableViewItem tbl = new TableViewItem();
+				tbl.setImcomed_at(rs.getString("imcomed_at"));
+				tbl.setMemo(rs.getString("memo"));
+				tbl.setImcome(rs.getString("imcome"));
+				list.add(tbl);
+			}
+		}catch(SQLException e) {
 			System.out.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
 		}
-		return newPrice;
+		return list;
+	}
+	
+	//hxoh—š—ğ‰æ–Ê‚ÌTableView‚É•\¦‚³‚¹‚éƒf[ƒ^‚Ìæ“¾
+	public ObservableList<TableViewItem> selectTableViewPays() throws SQLException {
+		final String SUM_QUERY = "SELECT paid_at, category, memo, money FROM pays JOIN categorys ON pays.category_id = categorys.id ORDER BY paid_at;";
+		ObservableList<TableViewItem> list = FXCollections.observableArrayList();
+		
+		try (Connection conn = DriverManager.getConnection(url, user, password);
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(SUM_QUERY)) {
+
+			while(rs.next()){
+				TableViewItem tbl = new TableViewItem();
+				tbl.setPaid_at(rs.getString("paid_at"));
+				tbl.setCategory(rs.getString("category"));
+				tbl.setMemo(rs.getString("memo"));
+				tbl.setMoney(rs.getString("money"));
+				list.add(tbl);
+				System.out.println(list);
+			}
+		}catch(SQLException e) {
+			System.out.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
+			
