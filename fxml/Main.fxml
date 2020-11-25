@@ -175,17 +175,17 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <ImageView fitHeight="27.0" fitWidth="25.0" layoutX="192.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="27.0" fitWidth="25.0" layoutX="192.0" layoutY="474.0" onDragDetected="#onPaysReportButtonCliked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/search.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="183.0" layoutY="399.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="183.0" layoutY="399.0" onDragDetected="#onAddPayButtonCliked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/pay.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="459.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="459.0" layoutY="54.0" onDragDetected="#onImcomesReportButtonCliked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/pig.png" />
          </image>

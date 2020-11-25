@@ -8,23 +8,23 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="650.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaysReportController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="488.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PaysReportController">
 	<children>
 		<Pane prefHeight="80.0" prefWidth="650.0" style="-fx-background-color: #ffbf00;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
 			<children>
-				<Label layoutX="190.0" layoutY="17.0" prefHeight="47.0" prefWidth="271.0" text="　　これまでの支出" textFill="#979797">
+				<Label layoutX="109.0" layoutY="17.0" prefHeight="47.0" prefWidth="271.0" text="　　これまでの支出" textFill="#979797">
 					<font>
 						<Font size="32.0" />
 					</font>
 				</Label>
-				<ImageView fitHeight="37.0" fitWidth="41.0" layoutX="172.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
+				<ImageView fitHeight="37.0" fitWidth="41.0" layoutX="101.0" layoutY="-31.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
 					<image>
 						<Image url="@../images/search.png" />
 					</image>
@@ -34,24 +34,24 @@
 				</ImageView>
 			</children>
 		</Pane>
-		<TableView fx:id="table" layoutX="66.0" layoutY="121.0" prefHeight="353.0" prefWidth="528.0" AnchorPane.bottomAnchor="235.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="121.0">
+		<TableView fx:id="table" layoutX="80.0" layoutY="191.0" prefHeight="291.0" prefWidth="329.0" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="191.0">
 			<columns>
-				<TableColumn prefWidth="91.0" text="日付">
+				<TableColumn prefWidth="81.0" text="日付">
 					<cellValueFactory>
 			    <PropertyValueFactory property="paid_at" />
   		    </cellValueFactory>
 	    </TableColumn>
-		<TableColumn prefWidth="120.0" text="カテゴリー">
+		<TableColumn prefWidth="69.0" text="カテゴリー">
 		    <cellValueFactory>
 			   <PropertyValueFactory property="category" />
   		    </cellValueFactory>
 	    </TableColumn>
-		<TableColumn prefWidth="175.0" text="メモ">
+		<TableColumn prefWidth="105.0" text="メモ">
 		    <cellValueFactory>
 			   <PropertyValueFactory property="memo" />
   		    </cellValueFactory>
 	    </TableColumn>
-	    <TableColumn prefWidth="141.0" text="金額">
+	    <TableColumn prefWidth="73.0" text="金額">
 			<cellValueFactory>
 		       <PropertyValueFactory property="money" />
   		    </cellValueFactory>
@@ -63,7 +63,7 @@
 				<Font size="19.0" />
 			</font>
 			<graphic>
-				<ImageView fitHeight="40.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
+				<ImageView fitHeight="40.0" fitWidth="33.0" onDragDetected="#onHomeButtonCliked" pickOnBounds="true" preserveRatio="true" x="30.0" y="50.0">
 					<image>
 						<Image url="@../images/home.png" />
 					</image>
@@ -73,7 +73,7 @@
 				</ImageView>
 			</graphic>
 		</Button>
-		<ComboBox fx:id="ComboBox" layoutX="66.0" layoutY="519.0" prefHeight="37.0" prefWidth="292.0" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="66.0">
+		<ComboBox fx:id="cbBox" layoutX="107.0" layoutY="115.0" prefHeight="30.0" prefWidth="214.0" AnchorPane.bottomAnchor="440.0" AnchorPane.leftAnchor="107.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value="日ごとにいくら使ったか" />
@@ -84,21 +84,6 @@
 				</FXCollections>
 			</items>
 		</ComboBox>
-		<Label layoutX="372.0" layoutY="517.0" prefHeight="47.0" prefWidth="37.0" text="は" textFill="#575757" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="372.0">
-			<font>
-				<Font size="19.0" />
-			</font>
-		</Label>
-		<Label fx:id="PayMoneyLabel" alignment="CENTER_RIGHT" layoutX="210.0" layoutY="581.0" prefHeight="47.0" prefWidth="148.0" textAlignment="RIGHT" textFill="#ff2020" textOverrun="CLIP" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="210.0">
-			<font>
-				<Font name="System Bold Italic" size="31.0" />
-			</font>
-		</Label>
-		<Label layoutX="372.0" layoutY="581.0" prefHeight="47.0" prefWidth="91.0" text="です" textFill="#575757" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="372.0">
-			<font>
-				<Font size="19.0" />
-			</font>
-		</Label>
-      <Button fx:id="DecisionButton" layoutX="418.0" layoutY="525.0" mnemonicParsing="false" onAction="#onDecisionButton" prefHeight="25.0" prefWidth="44.0" text="決定" AnchorPane.bottomAnchor="159.0" AnchorPane.leftAnchor="418.0" />
+      <Button fx:id="SearchButton" layoutX="357.0" layoutY="115.0" mnemonicParsing="false" onAction="#onSearchButton" prefHeight="30.0" prefWidth="52.0" text="検索" AnchorPane.bottomAnchor="440.0" AnchorPane.leftAnchor="357.0" />
 	</children>
 </AnchorPane>

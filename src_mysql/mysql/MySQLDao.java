@@ -4,12 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.ArrayList;
-
 import controller.TableViewItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -161,7 +158,6 @@ public class MySQLDao {
 				tbl.setMemo(rs.getString("memo"));
 				tbl.setMoney(rs.getString("money"));
 				list.add(tbl);
-				System.out.println(list);
 			}
 		}catch(SQLException e) {
 			System.out.println("SQLException:" + e.getMessage());

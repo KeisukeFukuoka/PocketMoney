@@ -31,7 +31,6 @@ public class ImcomesReportController implements Initializable{
 		//”お小遣い”履歴画面のTableViewに表示させるデータの取得
 		try {
 			MySQLDao mysq = new MySQLDao();
-
 			table.setItems(mysq.selectTableViewIncomes());
 
 		} catch(SQLException e) {
