@@ -1,0 +1,276 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+
+<html xmlns:s="http://sqlfairy.sourceforge.net/sqlfairy.xml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<meta charset="utf-8">
+<title>テーブル定義</title>
+<style>
+					.page {
+						width:960px;
+						margin:0 auto 100px auto;
+					}
+					table {
+						width:100%;
+						table-layout:fixed;
+						border-collapse:collapse;
+					}
+					th, td {
+						word-wrap:break-word;
+						border:1px solid #999;
+					}
+
+					@media print {
+						.page {
+							width:100%;
+							margin:0;
+							page-break-after:always;
+						}
+					}
+				</style>
+</head>
+<body>
+<div class="page" style="text-align:center;">
+<h1 style="padding:10mm 0;">テーブル定義書</h1>
+<h2>データベース名 ： pocketmoney<h2>
+</div>
+<div class="page">
+<table class="table table-bordered htable" style="margin-bottom:1em;">
+<colgroup>
+<col style="width:30%;">
+<col style="">
+</colgroup>
+<tbody>
+<tr>
+<th>テーブル名</th>
+<td>categorys</td>
+</tr>
+<tr>
+<th>備考</th>
+<td>カテゴリー登録表</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-condensed">
+<colgroup>
+<col style="width:3em;">
+<col style="max-width:50%;">
+<col style="max-width:50%;">
+<col style="width:4em;">
+<col style="width:5em;">
+<col style="width:5em;">
+<col style="width:5em;">
+<col style="">
+</colgroup>
+<thead><tr style="white-space:nowrap;">
+<th class="text-right">#</th>
+<th>物理名</th>
+<th>型</th>
+<th>NULL</th>
+<th>初期値</th>
+<th>主キー</th>
+<th>ユニーク</th>
+<th>備考</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="text-right">1</td>
+<td>id</td>
+<td>int(11)</td>
+<td style="text-align:center;"></td>
+<td></td>
+<td style="text-align:center;">○</td>
+<td style="text-align:center;"></td>
+<td>カテゴリーID</td>
+</tr>
+<tr>
+<td class="text-right">2</td>
+<td>category</td>
+<td>varchar(20)</td>
+<td style="text-align:center;"></td>
+<td></td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;"></td>
+<td>カテゴリー</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="page">
+<table class="table table-bordered htable" style="margin-bottom:1em;">
+<colgroup>
+<col style="width:30%;">
+<col style="">
+</colgroup>
+<tbody>
+<tr>
+<th>テーブル名</th>
+<td>imcomes</td>
+</tr>
+<tr>
+<th>備考</th>
+<td>お小遣いGET履歴</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-condensed">
+<colgroup>
+<col style="width:3em;">
+<col style="max-width:50%;">
+<col style="max-width:50%;">
+<col style="width:4em;">
+<col style="width:5em;">
+<col style="width:5em;">
+<col style="width:5em;">
+<col style="">
+</colgroup>
+<thead><tr style="white-space:nowrap;">
+<th class="text-right">#</th>
+<th>物理名</th>
+<th>型</th>
+<th>NULL</th>
+<th>初期値</th>
+<th>主キー</th>
+<th>ユニーク</th>
+<th>備考</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="text-right">1</td>
+<td>id</td>
+<td>int(11)</td>
+<td style="text-align:center;"></td>
+<td></td>
+<td style="text-align:center;">○</td>
+<td style="text-align:center;"></td>
+<td>お小遣いレコードID</td>
+</tr>
+<tr>
+<td class="text-right">2</td>
+<td>imcome</td>
+<td>int(10)</td>
+<td style="text-align:center;"></td>
+<td></td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;"></td>
+<td>お小遣い金額</td>
+</tr>
+<tr>
+<td class="text-right">3</td>
+<td>memo</td>
+<td>varchar(20)</td>
+<td style="text-align:center;">○</td>
+<td>NULL</td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;"></td>
+<td>メモ</td>
+</tr>
+<tr>
+<td class="text-right">4</td>
+<td>imcomed_at</td>
+<td>date</td>
+<td style="text-align:center;"></td>
+<td></td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;"></td>
+<td>お小遣いGET日時</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="page">
+<table class="table table-bordered htable" style="margin-bottom:1em;">
+<colgroup>
+<col style="width:30%;">
+<col style="">
+</colgroup>
+<tbody>
+<tr>
+<th>テーブル名</th>
+<td>pays</td>
+</tr>
+<tr>
+<th>備考</th>
+<td>支出履歴</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-condensed">
+<colgroup>
+<col style="width:3em;">
+<col style="max-width:50%;">
+<col style="max-width:50%;">
+<col style="width:4em;">
+<col style="width:5em;">
+<col style="width:5em;">
+<col style="width:5em;">
+<col style="">
+</colgroup>
+<thead><tr style="white-space:nowrap;">
+<th class="text-right">#</th>
+<th>物理名</th>
+<th>型</th>
+<th>NULL</th>
+<th>初期値</th>
+<th>主キー</th>
+<th>ユニーク</th>
+<th>備考</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="text-right">1</td>
+<td>id</td>
+<td>int(11)</td>
+<td style="text-align:center;"></td>
+<td></td>
+<td style="text-align:center;">○</td>
+<td style="text-align:center;"></td>
+<td>支出レコードID</td>
+</tr>
+<tr>
+<td class="text-right">2</td>
+<td>category_id</td>
+<td>int(10)</td>
+<td style="text-align:center;"></td>
+<td></td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;"></td>
+<td>カテゴリーID</td>
+</tr>
+<tr>
+<td class="text-right">3</td>
+<td>money</td>
+<td>int(10)</td>
+<td style="text-align:center;"></td>
+<td></td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;"></td>
+<td>支出金額</td>
+</tr>
+<tr>
+<td class="text-right">4</td>
+<td>memo</td>
+<td>varchar(20)</td>
+<td style="text-align:center;">○</td>
+<td>NULL</td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;"></td>
+<td>メモ</td>
+</tr>
+<tr>
+<td class="text-right">5</td>
+<td>paid_at</td>
+<td>date</td>
+<td style="text-align:center;"></td>
+<td></td>
+<td style="text-align:center;"></td>
+<td style="text-align:center;"></td>
+<td>支出日時</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
+

@@ -77,11 +77,10 @@
 			<items>
 				<FXCollections fx:factory="observableArrayList">
 					<String fx:value="日ごとにいくら使ったか" />
+					<String fx:value="何回使ったか" />
 					<String fx:value="一回当たり平均額" />
 					<String fx:value="3000円以上の支出" />
-					<String fx:value="カテゴリーごとの合計額" />
-					<String fx:value="今月の合計額" />
-					<String fx:value="総合計額" />
+					<String fx:value="これまでで一番高い支出" />
 				</FXCollections>
 			</items>
 		</ComboBox>
