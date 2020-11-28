@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<mysqldump xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<database name="pocketmoney">
+	<table_structure name="categorys">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="カテゴリーID" />
+		<field Field="category" Type="varchar(20)" Null="NO" Key="" Extra="" Comment="カテゴリー" />
+		<key Table="categorys" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="4" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="categorys" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="4" Avg_row_length="4096" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="5" Create_time="2020-11-06 07:42:21" Update_time="2020-11-06 07:42:32" Collation="utf8mb4_bin" Create_options="" Comment="カテゴリー登録表" Max_index_length="0" Temporary="N" />
+	</table_structure>
+	<table_structure name="imcomes">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="お小遣いレコードID" />
+		<field Field="imcome" Type="int(10)" Null="NO" Key="" Extra="" Comment="お小遣い金額" />
+		<field Field="memo" Type="varchar(20)" Null="YES" Key="" Default="NULL" Extra="" Comment="メモ" />
+		<field Field="imcomed_at" Type="date" Null="NO" Key="" Extra="" Comment="お小遣いGET日時" />
+		<key Table="imcomes" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="imcomes" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="1" Create_time="2020-11-06 07:42:26" Collation="utf8mb4_bin" Create_options="" Comment="お小遣いGET履歴" Max_index_length="0" Temporary="N" />
+	</table_structure>
+	<table_structure name="pays">
+		<field Field="id" Type="int(11)" Null="NO" Key="PRI" Extra="auto_increment" Comment="支出レコードID" />
+		<field Field="category_id" Type="int(10)" Null="NO" Key="" Extra="" Comment="カテゴリーID" />
+		<field Field="money" Type="int(10)" Null="NO" Key="" Extra="" Comment="支出金額" />
+		<field Field="memo" Type="varchar(20)" Null="YES" Key="" Default="NULL" Extra="" Comment="メモ" />
+		<field Field="paid_at" Type="date" Null="NO" Key="" Extra="" Comment="支出日時" />
+		<key Table="pays" Non_unique="0" Key_name="PRIMARY" Seq_in_index="1" Column_name="id" Collation="A" Cardinality="0" Null="" Index_type="BTREE" Comment="" Index_comment="" />
+		<options Name="pays" Engine="InnoDB" Version="10" Row_format="Dynamic" Rows="0" Avg_row_length="0" Data_length="16384" Max_data_length="0" Index_length="0" Data_free="0" Auto_increment="1" Create_time="2020-11-06 07:42:17" Collation="utf8mb4_bin" Create_options="" Comment="支出履歴" Max_index_length="0" Temporary="N" />
+	</table_structure>
+</database>
+</mysqldump>

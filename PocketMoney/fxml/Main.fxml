@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="541.0" style="-fx-background-color: z;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="AddImcomeButton" layoutX="341.0" layoutY="45.0" mnemonicParsing="false" onAction="#onAddImcomeButtonCliked" prefHeight="43.0" prefWidth="99.0" style="-fx-background-color: #99e07a;" text="＋お小遣い追加" textFill="GREY" />
+      <Button fx:id="ImcomesReportButton" layoutX="450.0" layoutY="45.0" mnemonicParsing="false" onAction="#onImcomesReportButtonCliked" prefHeight="43.0" prefWidth="67.0" style="-fx-background-color: #99e07a;" text="       履歴" textFill="#808080" />
+      <Label layoutX="98.0" layoutY="60.0" prefHeight="17.0" prefWidth="129.0" text="お小遣い残金">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="91.0" layoutY="78.0" prefHeight="17.0" prefWidth="230.0" />
+      <Label layoutX="296.0" layoutY="60.0" prefHeight="27.0" prefWidth="25.0" text="円">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="MoneyLeftLabel" alignment="CENTER_RIGHT" layoutX="198.0" layoutY="45.0" prefHeight="47.0" prefWidth="91.0" textAlignment="RIGHT" textFill="#ff2020" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold Italic" size="31.0" />
+         </font>
+      </Label>
+      <Separator layoutY="117.0" prefHeight="17.0" prefWidth="541.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <DatePicker fx:id="DatePicker" layoutX="168.0" layoutY="158.0" prefHeight="38.0" prefWidth="119.0" promptText="yyyy/mm/dd" />
+      <Label layoutX="98.0" layoutY="163.0" prefHeight="27.0" prefWidth="54.0" text="日付">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="218.0" prefHeight="27.0" prefWidth="54.0" text="メモ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="275.0" prefHeight="27.0" prefWidth="54.0" text="支出">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="98.0" layoutY="336.0" prefHeight="27.0" prefWidth="57.0" text="カテゴリ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="168.0" layoutY="328.0" prefHeight="43.0" prefWidth="338.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="80.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="5.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="80.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="5.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="80.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="5.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="40.0" prefWidth="80.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ToggleButton fx:id="FoodExpenses" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="83.0" style="-fx-border-insets: solid;">
+               <toggleGroup>
+                  <ToggleGroup fx:id="ToggleGroup" />
+               </toggleGroup>
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
+            </ToggleButton>
+            <ToggleButton fx:id="DailyNecessities" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="109.0" prefWidth="89.0" style="-fx-border-insets: solid;" toggleGroup="$ToggleGroup" GridPane.columnIndex="2">
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
+            </ToggleButton>
+            <ToggleButton fx:id="SkillUp" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="109.0" prefWidth="89.0" style="-fx-border-insets: solid;" toggleGroup="$ToggleGroup" GridPane.columnIndex="4">
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
+            </ToggleButton>
+            <ToggleButton fx:id="Other" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="109.0" prefWidth="89.0" style="-fx-border-insets: solid;" toggleGroup="$ToggleGroup" GridPane.columnIndex="6">
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
+            </ToggleButton>
+            <Label prefHeight="27.0" prefWidth="34.0" text="食費" textFill="#505050">
+               <GridPane.margin>
+                  <Insets left="25.0" top="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="27.0" prefWidth="65.0" text="日用品" textFill="#505050" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" top="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="27.0" prefWidth="95.0" text="スキルアップ" textFill="#505050" GridPane.columnIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" top="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="27.0" prefWidth="40.0" text="その他" textFill="#505050" GridPane.columnIndex="6">
+               <GridPane.margin>
+                  <Insets left="22.0" top="25.0" />
+               </GridPane.margin>
+            </Label>
+            <ImageView fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/fork.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="26.0" />
+               </GridPane.margin>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../images/wash.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="13.0" left="28.0" />
+               </GridPane.margin>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+               <image>
+                  <Image url="@../images/syudy.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="13.0" left="29.0" />
+               </GridPane.margin>
+            </ImageView>
+            <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+               <image>
+                  <Image url="@../images/free.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="11.0" left="28.0" />
+               </GridPane.margin>
+            </ImageView>
+         </children>
+      </GridPane>
+      <TextField fx:id="MemoTextField" layoutX="168.0" layoutY="213.0" prefHeight="38.0" prefWidth="119.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="PayMoneyTextField" alignment="CENTER_RIGHT" layoutX="168.0" layoutY="267.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="45.0" prefWidth="119.0">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </TextField>
+      <Label layoutX="296.0" layoutY="275.0" prefHeight="27.0" prefWidth="25.0" text="円">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="AddPayButton" layoutX="168.0" layoutY="398.0" mnemonicParsing="false" onAction="#onAddPayButtonCliked" prefHeight="47.0" prefWidth="202.0" style="-fx-background-color: #ffbf00;" text="　　支出を登録する" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="PaysReportButton" layoutX="168.0" layoutY="468.0" mnemonicParsing="false" onAction="#onPaysReportButtonCliked" prefHeight="43.0" prefWidth="202.0" style="-fx-background-color: #ffbf00;" text="　  これまでの支出" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="27.0" fitWidth="25.0" layoutX="192.0" layoutY="474.0" onDragDetected="#onPaysReportButtonCliked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/search.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="183.0" layoutY="399.0" onDragDetected="#onAddPayButtonCliked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pay.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="459.0" layoutY="54.0" onDragDetected="#onImcomesReportButtonCliked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pig.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

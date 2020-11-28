@@ -43,6 +43,15 @@ public class PaysReportController implements Initializable{	//OK
 			System.out.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
 		}
+
+		//		//コンボボックスに項目を追加 すでにfxmlで実装済み！！！！
+		//		cbBox.setItems(FXCollections.observableArrayList());
+		//		cbBox.getItems().add("日ごとにいくら使ったか");
+		//		cbBox.getItems().add("何回使ったか");
+		//		cbBox.getItems().add("一回当たり平均額");
+		//		cbBox.getItems().add("3000円以上の支出");
+		//		cbBox.getItems().add("これまでで一番安い支出");
+		//		cbBox.getItems().add("これまでで一番高い支出");
 	}
 
 	@FXML
@@ -50,16 +59,30 @@ public class PaysReportController implements Initializable{	//OK
 
 		String search = cbBox.getSelectionModel().getSelectedItem();
 		System.out.println(search);
-		try {
-			MySQLDao mysq = new MySQLDao();
 
-			table.setItems(mysq.searchTableView(search));
+		switch(search) {
+		case "日ごとにいくら使ったか":
+			//それぞれ選択されたカテゴリに応じて、MySQLへ挿入
+			System.out.println(search);
+			break;
 
-		} catch(SQLException e) {
-			System.out.println("SQLException:" + e.getMessage());
-			e.printStackTrace();
+		case "何回使ったか":
+			System.out.println(search);
+			break;
+
+		case "一回当たり平均額":
+			System.out.println(search);			
+			break;
+
+		case "3000円以上の支出":
+			System.out.println(search);
+			break;
+
+		case "これまでで一番高い支出":
+			System.out.println(search);
+			break;
+
 		}
-
 	}
 
 	@FXML

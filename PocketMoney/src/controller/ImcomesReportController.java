@@ -4,40 +4,34 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import mysql.MySQLDao;
 
-public class PaysReportController implements Initializable{	//OK
-	@FXML
-	private TableView<TableViewItem> table;
+public class ImcomesReportController implements Initializable{
 
 	@FXML
-	private ComboBox<String> cbBox;
+	private TableView<TableViewItem>/*なぜ警告*/ table;	//テーブルビュー
 
 	@FXML
-	private Button SearchButton;
-
-	@FXML
-	private Button Homebutton;
+	private Button HomeButton;					//ホームボタン
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
 		//”お小遣い”履歴画面のTableViewに表示させるデータの取得
 		try {
 			MySQLDao mysq = new MySQLDao();
-
-			table.setItems(mysq.selectTableViewPays());
+			table.setItems(mysq.selectTableViewIncomes());
 
 		} catch(SQLException e) {
 			System.out.println("SQLException:" + e.getMessage());
@@ -45,25 +39,9 @@ public class PaysReportController implements Initializable{	//OK
 		}
 	}
 
-	@FXML
-	void onSearchButton(ActionEvent event) {
-
-		String search = cbBox.getSelectionModel().getSelectedItem();
-		System.out.println(search);
-		try {
-			MySQLDao mysq = new MySQLDao();
-
-			table.setItems(mysq.searchTableView(search));
-
-		} catch(SQLException e) {
-			System.out.println("SQLException:" + e.getMessage());
-			e.printStackTrace();
-		}
-
-	}
 
 	@FXML
-	void onHomeButtonCliked(ActionEvent event) {
+	private void onHomeButtonCliked(ActionEvent event) {
 		/*
 		 * 現在表示されている画面を閉じる
 		 */
