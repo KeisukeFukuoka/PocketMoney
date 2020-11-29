@@ -89,7 +89,7 @@ public class ImcomeDoneController implements Initializable {
 	
 		//ƒz[ƒ€‰æ–Ê‚Ö‘JˆÚ
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
 	    	loader.setController(new MainController());
 	    	Parent root = loader.load();
 	        Scene scene = new Scene(root);

@@ -24,7 +24,7 @@ import mysql.MySQLDao;
 public class ImcomesReportController implements Initializable{
 
 	@FXML
-	private TableView<TableViewItem>table;
+	private TableView<TableViewProperty>table;
 	@FXML
 	private Button HomeButton;
 
@@ -62,7 +62,7 @@ public class ImcomesReportController implements Initializable{
 
 		//ƒz[ƒ€‰æ–Ê‚Ö‰æ–Ê‘JˆÚ
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
 			loader.setController(new MainController());
 			Parent root = loader.load();
 			Scene scene = new Scene(root);

@@ -4,10 +4,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- * ImcomesReportControllerクラス 
- * お小遣い履歴画面のコントローラークラス
+ * TableViewPropertyクラス 
+ * TableViewに表示させるためカラム名プロパティを保持
  */
-public class TableViewItem {
+public class TableViewProperty {
 	
 	private StringProperty category;
 	private StringProperty imcome;

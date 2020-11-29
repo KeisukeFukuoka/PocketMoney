@@ -29,7 +29,7 @@ public class PaysReportController implements Initializable{	//OK
 	@FXML
 	private Button SearchButton;
 	@FXML
-	private TableView<TableViewItem> table;
+	private TableView<TableViewProperty> table;
 	@FXML
 	private Button Homebutton;
 
@@ -90,7 +90,7 @@ public class PaysReportController implements Initializable{	//OK
 
 		//ƒz[ƒ€‰æ–Ê‚Ö‰æ–Ê‘JˆÚ
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
 			loader.setController(new MainController());
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
