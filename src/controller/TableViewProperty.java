@@ -3,23 +3,18 @@ package controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class TableViewItem {
+/**
+ * TableViewPropertyクラス 
+ * TableViewに表示させるためカラム名プロパティを保持
+ */
+public class TableViewProperty {
 	
-	private StringProperty id;
 	private StringProperty category;
 	private StringProperty imcome;
 	private StringProperty money;
 	private StringProperty memo;
 	private StringProperty imcomed_at;
 	private StringProperty paid_at;
-	
-	public StringProperty idProperty() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = new SimpleStringProperty(id);
-	}
 	
 	public StringProperty categoryProperty() {
 		return category;

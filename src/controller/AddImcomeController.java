@@ -19,28 +19,40 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import mysql.MySQLDao;
 
+/**
+ * AddImcomeControllerクラス 
+ * お小遣い入力画面のコントローラークラス
+ */
 public class AddImcomeController implements Initializable{
-
+	//入力フォーム
 	@FXML
-	private javafx.scene.control.DatePicker DatePicker; //DatePicker→javafx.scene.controlへ変更
+	private javafx.scene.control.DatePicker DatePicker; //Alart処理内のNULLチェックの為。DatePicker→javafx.scene.controlへ変更
 	@FXML
 	private TextField MemoTextField;
 	@FXML
 	private TextField ImcomePriceTextField;
 	@FXML
 	private Button AddImcomeButton;
+	//ホームボタン
 	@FXML
 	private Button HomeButton;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//イニシャライズ
+		
 	}
-
+	
+	/**
+	 * onAddImcomeButtonClikedメソッド
+	 * 入力ボタンが押された場合の処理
+	 * NULLチェック、アラート表示
+	 * 入力データをDaoクラスへ渡す
+	 * 入力完了画面へ遷移
+	 */
 	@FXML
 	private void onAddImcomeButtonCliked(ActionEvent event) throws SQLException {
 
-		//入力エラーの際にアラートを表示させる処理
+		//NULLの際にアラートを表示させる処理
 		Window owner = AddImcomeButton.getScene().getWindow();
 
 		if (DatePicker.getValue() == null) {
@@ -54,23 +66,19 @@ public class AddImcomeController implements Initializable{
 			return;
 		}
 
-
+		//入力内容を取得し、Daoクラスへ渡す
 		LocalDate imcomed_at = DatePicker.getValue();
 		String memo = MemoTextField.getText();
 		String stimcome = ImcomePriceTextField.getText();
 		int imcome = Integer.parseInt(stimcome);
-		
 		MySQLDao.insertRecord(imcomed_at, memo, imcome);
 
-
-		/*
-		 * 現在表示されている画面を閉じる
-		 */
+		//現在表示されている画面を閉じる
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
 
-		//画面遷移
+		//入力完了画面へ遷移
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource("/ImcomeDone.fxml"));
 			Scene scene = new Scene(parent);
@@ -82,7 +90,11 @@ public class AddImcomeController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * showAlertメソッド
+	 * アラート表示内容定義
+	 */
 	private void showAlert(Alert.AlertType alertType, Window owner, String title, String header, String message) {
 
 		Alert alert = new Alert(alertType);
@@ -93,22 +105,25 @@ public class AddImcomeController implements Initializable{
 		alert.show();
 	}
 
+	/**
+	 * onHomeButtonClikedメソッド
+	 * ホームボタンが押された場合の処理
+	 * ホーム画面へ遷移
+	 */
 	@FXML
 	private void onHomeButtonCliked(ActionEvent event) {
-		/*
-		 * 現在表示されている画面を閉じる
-		 */
+
+		//現在表示されている画面を閉じる
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
 
-		//画面遷移
+		//ホーム画面へ遷移
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
 			loader.setController(new MainController());
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-
 			Stage stage = new Stage();
 			stage.setTitle("お小遣い管理アプリ");
 			stage.setScene(scene);
@@ -117,6 +132,4 @@ public class AddImcomeController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-
-
 }

@@ -17,6 +17,10 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import mysql.MySQLDao;
 
+/**
+ * ImcomeDoneControllerクラス 
+ * お小遣い入力完了画面のコントローラークラス
+ */
 public class ImcomeDoneController implements Initializable {
 	
 	@FXML
@@ -26,28 +30,38 @@ public class ImcomeDoneController implements Initializable {
 	@FXML
 	private Button HomeButton;
 	
+	/**
+	 * initializeメソッド
+	 * 初期化処理
+	 *　入力完了した金額を表示
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		//AddImcome画面で入力された金額を、ラベルに反映
+		//DaoクラスMySQLDaoメソッドから直前の入力データを取得
 		try {
 			MySQLDao mysq = new MySQLDao();
+			//Labelに表示させる
 			ImcomePriceLabel.setText(mysq.selectIncomePrice());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	/**
+	 * onImcomesReportButtonClikedメソッド
+	 * お小遣い履歴画面へのリンクボタン押された場合の処理
+	 * 画面遷移
+	 */
 	@FXML
 	private void onImcomesReportButtonCliked(ActionEvent event) {
-		/*
-		 * 現在表示されている画面を閉じる
-		 */
+
+		//現在表示されている画面を閉じる
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
 		
-		//画面遷移
+		//お小遣い履歴画面遷移
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource("/ImcomesReport.fxml"));
 			Scene scene = new Scene(parent);
@@ -59,18 +73,23 @@ public class ImcomeDoneController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * onHomeButtonClikedメソッド
+	 * ホームボタンが押された場合の処理
+	 * ホーム画面へ遷移
+	 */
 	@FXML
 	private void onHomeButtonCliked(ActionEvent event) {
-		/*
-		 * 現在表示されている画面を閉じる
-		 */
+		
+		//現在表示されている画面を閉じる
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
 	
-		//画面遷移
+		//ホーム画面へ遷移
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
 	    	loader.setController(new MainController());
 	    	Parent root = loader.load();
 	        Scene scene = new Scene(root);
@@ -83,6 +102,4 @@ public class ImcomeDoneController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
-	
 }

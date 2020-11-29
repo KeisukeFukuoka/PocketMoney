@@ -6,24 +6,32 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Mainクラス 
+ *　アプリケーション画面の表示
+ * アプリケーション起動
+ */
 public class Main extends Application {
     
+	/**
+	 * startメソッド
+	 * アプリケーション画面の表示
+	 */
     @Override
     public void start(Stage stage) throws Exception {
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
     	loader.setController(new MainController());
     	Parent root = loader.load();
-    	//アプリケーションクラスのstartメソッドでは、FXMLLoad#loadの結果はSceneを作るために使う
-    	//FXMLのルートノードが何であれ、常にParentとして扱うのがよい
-    	
         Scene scene = new Scene(root);
-//        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
-        
         stage.setTitle("お小遣い管理アプリ");
         stage.setScene(scene);
         stage.show();
     }
-
+    
+	/**
+	 * mainメソッド
+	 * アプリケーション起動
+	 */
     public static void main(String[] args) {
         launch(args);
     }

@@ -18,66 +18,82 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import mysql.MySQLDao;
 
+/**
+ * ImcomesReportControllerクラス 
+ * お小遣い履歴画面のコントローラークラス
+ */
 public class PaysReportController implements Initializable{	//OK
-	@FXML
-	private TableView<TableViewItem> table;
 
 	@FXML
 	private ComboBox<String> cbBox;
-
 	@FXML
 	private Button SearchButton;
-
+	@FXML
+	private TableView<TableViewProperty> table;
 	@FXML
 	private Button Homebutton;
 
+	/**
+	 * initializeメソッド
+	 * 初期化処理
+	 * 支出履歴の表示
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//”お小遣い”履歴画面のTableViewに表示させるデータの取得
+
+		//DaoクラスMySQLDaoメソッドから支出履歴データの取得
 		try {
 			MySQLDao mysq = new MySQLDao();
-
+			//TableViewに表示させる
 			table.setItems(mysq.selectTableViewPays());
-
 		} catch(SQLException e) {
 			System.out.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * onSearchButtonメソッド
+	 * 検索ボタンが押された場合の処理
+	 * 検索条件ごとの文字列をDaoクラスへ渡す
+	 * 検索結果の表示
+	 */
 	@FXML
 	void onSearchButton(ActionEvent event) {
 
+		//検索条件ごとの文字列をコンボボックスから取得
 		String search = cbBox.getSelectionModel().getSelectedItem();
-		System.out.println(search);
+		
+		//検索条件データをDaoクラスMySQLDaoメソッドへ渡し、お小遣い履歴データの取得
 		try {
 			MySQLDao mysq = new MySQLDao();
-
+			//TableViewに表示させる
 			table.setItems(mysq.searchTableView(search));
-
 		} catch(SQLException e) {
 			System.out.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
 		}
-
 	}
 
+	/**
+	 * onHomeButtonClikedメソッド
+	 * ホームボタンが押された場合の処理
+	 * ホーム画面へ遷移
+	 */
 	@FXML
 	void onHomeButtonCliked(ActionEvent event) {
-		/*
-		 * 現在表示されている画面を閉じる
-		 */
+
+		//現在表示されている画面を閉じる
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
 
-		//画面遷移
+		//ホーム画面へ画面遷移
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
 			loader.setController(new MainController());
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-
 			Stage stage = new Stage();
 			stage.setTitle("お小遣い管理アプリ");
 			stage.setScene(scene);

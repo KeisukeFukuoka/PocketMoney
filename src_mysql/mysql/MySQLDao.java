@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import controller.TableViewItem;
+import controller.TableViewProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -118,16 +118,16 @@ public class MySQLDao {
 	}
 	
 	//”お小遣い”履歴画面のTableViewに表示させるデータの取得
-	public ObservableList<TableViewItem> selectTableViewIncomes() throws SQLException {
+	public ObservableList<TableViewProperty> selectTableViewIncomes() throws SQLException {
 		final String SUM_QUERY = "SELECT imcomed_at, memo, imcome FROM imcomes ORDER BY imcomed_at;";
-		ObservableList<TableViewItem> list = FXCollections.observableArrayList();
+		ObservableList<TableViewProperty> list = FXCollections.observableArrayList();
 		
 		try (Connection conn = DriverManager.getConnection(url, user, password);
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(SUM_QUERY)) {
 
 			while(rs.next()){
-				TableViewItem tbl = new TableViewItem();
+				TableViewProperty tbl = new TableViewProperty();
 				tbl.setImcomed_at(rs.getString("imcomed_at"));
 				tbl.setMemo(rs.getString("memo"));
 				tbl.setImcome(rs.getString("imcome"));
@@ -141,16 +141,16 @@ public class MySQLDao {
 	}
 	
 	//”支出”履歴画面のTableViewに表示させるデータの取得
-	public ObservableList<TableViewItem> selectTableViewPays() throws SQLException {
+	public ObservableList<TableViewProperty> selectTableViewPays() throws SQLException {
 		final String SUM_QUERY = "SELECT paid_at, category, memo, money FROM pays JOIN categorys ON pays.category_id = categorys.id ORDER BY paid_at;";
-		ObservableList<TableViewItem> list = FXCollections.observableArrayList();
+		ObservableList<TableViewProperty> list = FXCollections.observableArrayList();
 		
 		try (Connection conn = DriverManager.getConnection(url, user, password);
 				Statement stmt = conn.createStatement();
 				ResultSet rs = stmt.executeQuery(SUM_QUERY)) {
 
 			while(rs.next()){
-				TableViewItem tbl = new TableViewItem();
+				TableViewProperty tbl = new TableViewProperty();
 				tbl.setPaid_at(rs.getString("paid_at"));
 				tbl.setCategory(rs.getString("category"));
 				tbl.setMemo(rs.getString("memo"));
@@ -165,8 +165,8 @@ public class MySQLDao {
 	}
 	
 	//検索結果の取得
-	public ObservableList<TableViewItem> searchTableView(String search) throws SQLException {
-		ObservableList<TableViewItem> list = FXCollections.observableArrayList();
+	public ObservableList<TableViewProperty> searchTableView(String search) throws SQLException {
+		ObservableList<TableViewProperty> list = FXCollections.observableArrayList();
 		String SERACH_QUERY = null;
 		//それぞれ選択された検索ワードに応じて、SQL発行
 		switch(search) {
@@ -179,7 +179,7 @@ public class MySQLDao {
 					ResultSet rs = stmt.executeQuery(SERACH_QUERY)) {
 				
 				while(rs.next()){
-					TableViewItem tbl = new TableViewItem();
+					TableViewProperty tbl = new TableViewProperty();
 					tbl.setPaid_at(rs.getString("paid_at"));
 					tbl.setMoney(rs.getString("SUM(money)"));
 					list.add(tbl);
@@ -197,7 +197,7 @@ public class MySQLDao {
 					ResultSet rs = stmt.executeQuery(SERACH_QUERY)) {
 				
 				while(rs.next()){
-					TableViewItem tbl = new TableViewItem();
+					TableViewProperty tbl = new TableViewProperty();
 					tbl.setMoney(rs.getString("AVG(money)"));
 					list.add(tbl);
 				}
@@ -214,7 +214,7 @@ public class MySQLDao {
 					ResultSet rs = stmt.executeQuery(SERACH_QUERY)) {
 				
 				while(rs.next()){
-					TableViewItem tbl = new TableViewItem();
+					TableViewProperty tbl = new TableViewProperty();
 					tbl.setPaid_at(rs.getString("paid_at"));
 					tbl.setCategory(rs.getString("category"));
 					tbl.setMemo(rs.getString("memo"));
@@ -235,7 +235,7 @@ public class MySQLDao {
 					ResultSet rs = stmt.executeQuery(SERACH_QUERY)) {
 				
 				while(rs.next()){
-					TableViewItem tbl = new TableViewItem();
+					TableViewProperty tbl = new TableViewProperty();
 					tbl.setCategory(rs.getString("category"));
 					tbl.setMoney(rs.getString("SUM(money)"));
 					list.add(tbl);
@@ -253,7 +253,7 @@ public class MySQLDao {
 					ResultSet rs = stmt.executeQuery(SERACH_QUERY)) {
 				
 				while(rs.next()){
-					TableViewItem tbl = new TableViewItem();
+					TableViewProperty tbl = new TableViewProperty();
 					tbl.setMoney(rs.getString("SUM(money)"));
 					list.add(tbl);
 				}
@@ -270,7 +270,7 @@ public class MySQLDao {
 					ResultSet rs = stmt.executeQuery(SERACH_QUERY)) {
 				
 				while(rs.next()){
-					TableViewItem tbl = new TableViewItem();
+					TableViewProperty tbl = new TableViewProperty();
 					tbl.setMoney(rs.getString("SUM(money)"));
 					list.add(tbl);
 				}
