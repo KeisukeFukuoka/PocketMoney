@@ -3,23 +3,18 @@ package controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * ImcomesReportControllerクラス 
+ * お小遣い履歴画面のコントローラークラス
+ */
 public class TableViewItem {
 	
-	private StringProperty id;
 	private StringProperty category;
 	private StringProperty imcome;
 	private StringProperty money;
 	private StringProperty memo;
 	private StringProperty imcomed_at;
 	private StringProperty paid_at;
-	
-	public StringProperty idProperty() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = new SimpleStringProperty(id);
-	}
 	
 	public StringProperty categoryProperty() {
 		return category;

@@ -190,5 +190,7 @@
             <Image url="@../images/pig.png" />
          </image>
       </ImageView>
+      <Label fx:id="PayMoneyTextFieldLabel" layoutX="166.0" layoutY="312.0" prefHeight="17.0" prefWidth="34.0" />
+      <Label fx:id="DatePickerLabel" layoutX="166.0" layoutY="196.0" prefHeight="17.0" prefWidth="34.0" />
    </children>
 </AnchorPane>
