@@ -1,9 +1,0 @@
-*.class
-*.classpath
-*.swp
-target
-*.project
-*.settings
-bin/
-*.fxbuild
-*.css

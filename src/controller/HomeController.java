@@ -1,7 +1,6 @@
 package controller;
 
 import mysql.MySQLDao;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -26,15 +25,27 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
-public class MainController implements Initializable {
+/**
+ * HomeControllerクラス 
+ * ホーム画面のコントローラークラス
+ */
+public class HomeController implements Initializable {
+
+	//お小遣い表示
 	@FXML
 	private Button AddImcomeButton;
 	@FXML
 	private Button ImcomesReportButton;
 	@FXML
 	private Label MoneyLeftLabel;
+
+	//入力フォーム
 	@FXML
 	private DatePicker DatePicker;
+	@FXML
+	private TextField MemoTextField;
+	@FXML
+	private TextField PayMoneyTextField;
 	@FXML
 	private ToggleGroup ToggleGroup;
 	@FXML
@@ -46,27 +57,30 @@ public class MainController implements Initializable {
 	@FXML
 	private ToggleButton Other = new ToggleButton();
 	@FXML
-	private TextField MemoTextField, PayMoneyTextField;
+	private Button AddPayButton;
 	@FXML
-	private Button AddPayButton, PaysReportButton;
+	private Button PaysReportButton;
 
+	//トグルボタンが押されていない判断を保持。アラート表示処理に渡す。
 	private int catchNumber;
 
-
-
-
+	/**
+	 * initializeメソッド
+	 * 初期化処理
+	 * 画面表示と同時にお小遣い残高の表示
+	 * トグルボタンの監視
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		//アプリ起動時にお小遣い残高の表示
+		//ホーム画面にお小遣い残高の表示
 		try {
 			MySQLDao mysq = new MySQLDao();
 			MoneyLeftLabel.setText(mysq.selectMoney());
 		} catch (SQLException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-		
+
 		//トグルボタンへの値の割り当て
 		FoodExpenses.setUserData(1);
 		DailyNecessities.setUserData(2);
@@ -75,24 +89,34 @@ public class MainController implements Initializable {
 
 		//どのトグルボタンが押されたか？または、どのトグルボタンも押されていないか？監視
 		ToggleGroup.selectedToggleProperty().addListener(
-				(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) -> {
-					if (new_toggle != null)  //選択されていれば、
-						catchNumber =((int) new_toggle.getUserData());  //該当のトグルボタンに応じた値を取り出す
-					else 
-						catchNumber = 0;  //どのトグルボタンも押されていない場合
-				});
+			(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle) -> {
+				
+				//選択されていれば
+				if (new_toggle != null)
+					//該当のトグルボタンに割り当てられた値を代入
+					catchNumber =((int) new_toggle.getUserData()); 		
+				
+				//どれも選択されてなければ
+				else 
+					//トグルボタンに割り当てられていない値を代入
+					catchNumber = 0;
+		});
 	}
 
+	/**
+	 * onAddImcomeButtonClikedメソッド
+	 * お小遣い入力画面へのリンクボタン押された場合の処理
+	 * 画面遷移
+	 */
 	@FXML
 	void onAddImcomeButtonCliked(ActionEvent event) {
-		/*
-		 * 現在表示されている画面を閉じる
-		 */
+
+		//現在表示されている画面を閉じる
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
-		
-		//画面遷移
+
+		//お小遣い入力画面へ遷移
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource("/AddImcome.fxml"));
 			Scene scene = new Scene(parent);
@@ -104,16 +128,21 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * onImcomesReportButtonClikedメソッド
+	 * お小遣い履歴画面へのリンクボタン押された場合の処理
+	 * 画面遷移
+	 */
 	@FXML
 	void onImcomesReportButtonCliked(ActionEvent event) {
-		/*
-		 * 現在表示されている画面を閉じる
-		 */
+
+		//現在表示されている画面を閉じる
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
-		
-		//画面遷移
+
+		//お小遣い履歴画面へ遷移
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource("/ImcomesReport.fxml"));
 			Scene scene = new Scene(parent);
@@ -125,61 +154,71 @@ public class MainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	@FXML
-	public void onAddPayButtonCliked(ActionEvent event) throws SQLException {
 
-		//入力エラーの際にアラートを表示させる処理
+	/**
+	 * onAddImcomeButtonClikedメソッド
+	 * 入力ボタンが押された場合の処理
+	 * 入力が無ければアラート表示
+	 * 入力データをDaoクラスへ渡す
+	 * 入力完了画面へ遷移
+	 */
+	@FXML
+	public void onAddPayButtonCliked(ActionEvent event)  {
+
+		//例外処理
+		try {
+		//入力が無ければアラートを表示
 		Window owner = AddPayButton.getScene().getWindow();
 
 		if (DatePicker.getValue() == null) {
-			showAlert(Alert.AlertType.ERROR, owner, "入力エラー!", null,
-					"日付を入力して下さい。");
+			showAlert(Alert.AlertType.ERROR, owner, "入力エラー!", null, "日付を入力して下さい。");
 			return;
 		}
 		if (PayMoneyTextField.getText().isEmpty()) {
-			showAlert(Alert.AlertType.ERROR, owner, "入力エラー!", null,
-					"支出（円）を入力して下さい。");
+			showAlert(Alert.AlertType.ERROR, owner, "入力エラー!", null,"金額を入力して下さい。");
 			return;
 		}
 		if (catchNumber == 0) {
-			showAlert(Alert.AlertType.ERROR, owner, "入力エラー!", null,
-					"カテゴリーを選択して下さい。");
+			showAlert(Alert.AlertType.ERROR, owner, "入力エラー!", null,"カテゴリーを選択して下さい。");
 			return;
 		}
 
+		//入力内容を取得し、Daoクラスへ渡す
 		LocalDate paid_at = DatePicker.getValue();
 		String memo = MemoTextField.getText();
 		String stmoney = PayMoneyTextField.getText();
 		int money = Integer.parseInt(stmoney);
 		int category_id = catchNumber;
-
+		
+		//接続クラスのINSERTメソッドを呼び出し渡す
 		MySQLDao.insertRecord(paid_at, memo, money, category_id);
 
-		
-		/*
-		 * 現在表示されている画面を閉じる
-		 */
+		//getScene()メソッドによってシーンを取得
 		Scene s = ((Node)event.getSource()).getScene();
+        //Windowクラスのhide()メソッドで現在の画面を閉じる。
 		Window window = s.getWindow();
 		window.hide();
+
+
+		//入力完了画面へ遷移
+		Parent parent = FXMLLoader.load(getClass().getResource("/PayDone.fxml"));
+		Scene scene = new Scene(parent);
+		Stage stage = new Stage();
+		stage.setScene(scene);
+		stage.setTitle("登録完了");
+		stage.show();
 		
-		//画面遷移
-		try {
-			Parent parent = FXMLLoader.load(getClass().getResource("/PayDone.fxml"));
-			Scene scene = new Scene(parent);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setTitle("登録完了");
-			stage.show();
-		}catch(IOException e) {
+		}catch(IOException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * showAlertメソッド
+	 * アラート表示内容定義
+	 */
 	private void showAlert(Alert.AlertType alertType, Window owner, String title, String header, String message) {
-		// TODO 自動生成されたメソッド・スタブ
+		
 		Alert alert = new Alert(alertType);
 		alert.setTitle(title);
 		alert.setHeaderText(null);
@@ -187,18 +226,23 @@ public class MainController implements Initializable {
 		alert.initOwner(owner);
 		alert.show();
 	}
-
+	
+	/**
+	 * onPaysReportButtonClikedメソッド
+	 * 支出履歴画面へのリンクボタン押された場合の処理
+	 * 支出履歴画面へ遷移
+	 */
 	@FXML
 	void onPaysReportButtonCliked(ActionEvent event) {
-		/*
-		 * 現在表示されている画面を閉じる
-		 */
+		
+		//現在表示されている画面を閉じる
 		Scene s = ((Node)event.getSource()).getScene();
 		Window window = s.getWindow();
 		window.hide();
-		
-		//画面遷移
+
+		//例外処理
 		try {
+			//支出履歴画面へ遷移
 			Parent parent = FXMLLoader.load(getClass().getResource("/PaysReport.fxml"));
 			Scene scene = new Scene(parent);
 			Stage stage = new Stage();
