@@ -20,7 +20,7 @@ import mysql.MySQLDao;
 
 /**
  * ImcomesReportControllerクラス 
- * お小遣い履歴画面のコントローラークラス
+ * 支出履歴画面のコントローラークラス
  */
 public class PaysReportController implements Initializable{	//OK
 
@@ -36,18 +36,20 @@ public class PaysReportController implements Initializable{	//OK
 	/**
 	 * initializeメソッド
 	 * 初期化処理
-	 * 支出履歴の表示
+	 * Daoクラスから支出履歴データ取得
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		//DaoクラスMySQLDaoメソッドから支出履歴データの取得
+		//例外処理
 		try {
+            //Daoクラスのインスタンス生成
 			MySQLDao mysq = new MySQLDao();
+			
 			//TableViewに表示させる
 			table.setItems(mysq.selectTableViewPays());
+			
 		} catch(SQLException e) {
-			System.out.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -64,13 +66,14 @@ public class PaysReportController implements Initializable{	//OK
 		//検索条件ごとの文字列をコンボボックスから取得
 		String search = cbBox.getSelectionModel().getSelectedItem();
 		
-		//検索条件データをDaoクラスMySQLDaoメソッドへ渡し、お小遣い履歴データの取得
+		//例外処理
 		try {
+			//接続クラスのインスタンス生成
 			MySQLDao mysq = new MySQLDao();
-			//TableViewに表示させる
+			//呼び出し先からの戻り値データをTableViewに表示させる
 			table.setItems(mysq.searchTableView(search));
+			
 		} catch(SQLException e) {
-			System.out.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -91,7 +94,7 @@ public class PaysReportController implements Initializable{	//OK
 		//ホーム画面へ画面遷移
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
-			loader.setController(new MainController());
+			loader.setController(new HomeController());
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();

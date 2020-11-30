@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -26,6 +27,8 @@ public class PayDoneController implements Initializable{
 	@FXML
 	private Label PayMoneyLabel;
 	@FXML
+	private Button DeleteButton;
+	@FXML
 	private Button PaysReportButton;
 	@FXML
 	private Button HomeButton;
@@ -39,15 +42,45 @@ public class PayDoneController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 
 		//DaoクラスMySQLDaoメソッドから直前の入力データを取得
-		MySQLDao mysq = new MySQLDao();
 		try {
-			//Labelに表示させる
+			MySQLDao mysq = new MySQLDao();
 			PayMoneyLabel.setText(mysq.selectPayPrice());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * onPaysReportButtonClikedメソッド
+	 * 削除ボタン押された場合の処理
+	 * ホーム画面へ遷移
+	 */
+	@FXML
+	public void onDeleteButtonCliked(ActionEvent event) {
+		
+		//支出履歴画面へ遷移
+		try {
+			
+		MySQLDao.deletePaysRecord();
+		
+		//現在表示されている画面を閉じる
+		Scene s = ((Node)event.getSource()).getScene();
+		Window window = s.getWindow();
+		window.hide();
 
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+		loader.setController(new HomeController());
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+		Stage stage = new Stage();
+		stage.setTitle("お小遣い管理アプリ");
+		stage.setScene(scene);
+		stage.show();
+		}catch(IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * onPaysReportButtonClikedメソッド
 	 * 支出履歴画面へのリンクボタン押された場合の処理
@@ -90,7 +123,7 @@ public class PayDoneController implements Initializable{
 		//ホーム画面へ遷移
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
-			loader.setController(new MainController());
+			loader.setController(new HomeController());
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();

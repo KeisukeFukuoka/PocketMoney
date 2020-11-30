@@ -26,6 +26,8 @@ public class ImcomeDoneController implements Initializable {
 	@FXML
 	private Label ImcomePriceLabel;
 	@FXML
+	private Button DeleteButton;
+	@FXML
 	private Button ImcomesReportButton;
 	@FXML
 	private Button HomeButton;
@@ -44,6 +46,37 @@ public class ImcomeDoneController implements Initializable {
 			//Labelに表示させる
 			ImcomePriceLabel.setText(mysq.selectIncomePrice());
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * onPaysReportButtonClikedメソッド
+	 * 削除ボタン押された場合の処理
+	 * ホーム画面へ遷移
+	 */
+	@FXML
+	public void onDeleteButtonCliked(ActionEvent event) {
+		
+		//支出履歴画面へ遷移
+		try {
+			
+		MySQLDao.deleteImcomesRecord();
+		
+		//現在表示されている画面を閉じる
+		Scene s = ((Node)event.getSource()).getScene();
+		Window window = s.getWindow();
+		window.hide();
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+		loader.setController(new HomeController());
+		Parent root = loader.load();
+		Scene scene = new Scene(root);
+		Stage stage = new Stage();
+		stage.setTitle("お小遣い管理アプリ");
+		stage.setScene(scene);
+		stage.show();
+		}catch(IOException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
@@ -90,7 +123,7 @@ public class ImcomeDoneController implements Initializable {
 		//ホーム画面へ遷移
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
-	    	loader.setController(new MainController());
+	    	loader.setController(new HomeController());
 	    	Parent root = loader.load();
 	        Scene scene = new Scene(root);
 	        

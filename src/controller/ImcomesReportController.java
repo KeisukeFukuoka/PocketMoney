@@ -31,18 +31,20 @@ public class ImcomesReportController implements Initializable{
 	/**
 	 * initializeメソッド
 	 * 初期化処理
-	 * お小遣い履歴の表示
+	 * Daoクラスからお小遣い履歴データ取得
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		//DaoクラスMySQLDaoメソッドからお小遣い履歴データの取得
+		//例外処理
 		try {
+            //Daoクラスのインスタンス生成
 			MySQLDao mysq = new MySQLDao();
+			
 			//TableViewに表示させる
 			table.setItems(mysq.selectTableViewIncomes());
+
 		} catch(SQLException e) {
-			System.out.println("SQLException:" + e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -63,7 +65,7 @@ public class ImcomesReportController implements Initializable{
 		//ホーム画面へ画面遷移
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
-			loader.setController(new MainController());
+			loader.setController(new HomeController());
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
