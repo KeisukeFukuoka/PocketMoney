@@ -1,4 +1,4 @@
-# PocketMoney　お小遣い管理アプリケーション
+# PocketMoney　お小遣い管理アプリ ポートフォリオ
 
 
 # 記事の概要
@@ -274,7 +274,7 @@ setUserDataメソッドで各特定の値を設定。
 <summary>(一例)トグルボタン関数</summary>
 <div>
 
-```Java:トグルボタン関数
+```Java
 		//トグルボタンへの値の割り当て
 		FoodExpenses.setUserData(1);
 		DailyNecessities.setUserData(2);
@@ -314,7 +314,7 @@ setUserDataメソッドで各特定の値を設定。
 <summary>(一例)入力フォームの処理</summary>
 <div>
 
-```Java:入力フォームの処理一部抜粋
+```Java
 	@FXML
 	public void onAddPayButtonCliked(ActionEvent event)  {
 
@@ -355,7 +355,7 @@ setUserDataメソッドで各特定の値を設定。
 		}
 	}
 ```
-```Java:showAlartメソッド
+```Java
 	/**
 	 * showAlertメソッド
 	 * アラート表示内容定義
@@ -393,7 +393,7 @@ try~catchを用い、成功しているかどうか判断。
 <summary>(一例)データベースINSERT部分</summary>
 <div>
 
-```Java:データベースINSERT部分
+```Java
 	//paysテーブルへデータ挿入
 	public static void insertRecord(LocalDate paid_at, String memo, int money, int category_id) throws SQLException {
 		
@@ -433,7 +433,7 @@ GUI設計を確認しながら、全体の画面遷移を実装。
 <summary>(一例)画面遷移</summary>
 <div>
 
-```java:画面遷移
+```java
 		//getScene()メソッドによってシーンを取得
 		Scene s = ((Node)event.getSource()).getScene();
 		//Windowクラスのhide()メソッドで現在の画面を閉じる。
@@ -477,7 +477,7 @@ GUI設計を確認しながら、全体の画面遷移を実装。
 <summary>(一例)プロパティクラス作成</summary>
 <div>
 
-```java:TableViewPropertyクラス一部抜粋
+```java
 public class TableViewProperty {
 	
 	private StringProperty category;
@@ -519,7 +519,7 @@ TableViewにセットし表示させる。
 <summary>データベース出力</summary>
 <div>
 
-```Java:呼び出し先メソッド
+```Java
 	//”支出”履歴画面のTableViewに表示させるデータの取得
 	public ObservableList<TableViewProperty> selectTableViewPays() throws SQLException {
 		final String SUM_QUERY = "SELECT paid_at, category, memo, money "
@@ -559,7 +559,7 @@ TableViewにセットし表示させる。
 		return list;
 	}
 ```
-```java:呼び出し元メソッド
+```java
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -597,7 +597,7 @@ getSelectionModel()、getSelectedItem()メソッド
 <summary>検索機能</summary>
 <div>
 
-```xml:fxmlによるコンボボックス(一部抜粋)
+```xml
 		<ComboBox fx:id="cbBox" layoutX="107.0" layoutY="115.0" prefHeight="30.0" prefWidth="214.0" AnchorPane.bottomAnchor="440.0" AnchorPane.leftAnchor="107.0">
 			<items>
 				<FXCollections fx:factory="observableArrayList">
@@ -612,7 +612,7 @@ getSelectionModel()、getSelectedItem()メソッド
 		</ComboBox>
 ```
 
-```java:検索ボタンアクションメソッド
+```java
 	@FXML
 	void onSearchButton(ActionEvent event) {
 
@@ -632,7 +632,7 @@ getSelectionModel()、getSelectedItem()メソッド
 	}
 ```
 
-```java:検索結果の取得メソッド(一部抜粋)
+```java
 	public ObservableList<TableViewProperty> searchTableView(String search) throws SQLException {
 		ObservableList<TableViewProperty> list = FXCollections.observableArrayList();
 		String SERACH_QUERY = null;
